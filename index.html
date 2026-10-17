@@ -1904,5 +1904,485 @@ function init(){
 
 init();
 </script>
+
+    
+<!-- MÀN KẾT: MƯA ẢNH KỶ NIỆM VÔ TẬN -->
+<style>
+#memoryRain{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    display:none;
+    overflow:hidden;
+    isolation:isolate;
+    background:
+        radial-gradient(ellipse at 50% 55%,#53244188,transparent 55%),
+        radial-gradient(ellipse at 20% 10%,#742a6144,transparent 50%),
+        linear-gradient(145deg,#13091d,#291128 65%,#10091c);
+}
+#memoryRain.active{display:block}
+#memoryRainCanvas{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+}
+.rain-photo{
+    position:absolute;
+    top:0;
+    left:0;
+    width:var(--photo-width);
+    padding:7px 7px 28px;
+    border-radius:3px;
+    background:#fff8f4;
+    box-shadow:0 12px 35px #0007;
+    transform-origin:center;
+    pointer-events:none;
+    will-change:transform;
+    backface-visibility:hidden;
+}
+.rain-photo img{
+    display:block;
+    width:100%;
+    aspect-ratio:4/5;
+    object-fit:cover;
+    background:#f4c7d8;
+}
+.rain-photo::after{
+    content:"♡";
+    position:absolute;
+    bottom:3px;
+    left:0;
+    width:100%;
+    color:#bd6b8c;
+    font:700 19px "Dancing Script",cursive;
+    text-align:center;
+}
+.rain-petal{
+    position:absolute;
+    top:0;
+    left:0;
+    width:var(--petal-size);
+    height:calc(var(--petal-size) * .7);
+    border-radius:80% 0 80% 10%;
+    background:linear-gradient(135deg,#ffe4ee,#e77ea8);
+    box-shadow:inset -3px -2px 5px #ad3f7344;
+    pointer-events:none;
+    will-change:transform;
+}
+.rain-petal.heart{
+    width:auto;
+    height:auto;
+    border-radius:0;
+    background:none;
+    box-shadow:none;
+    color:#ffb6d1;
+    font-size:var(--petal-size);
+}
+.rain-center{
+    position:absolute;
+    z-index:15;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    pointer-events:none;
+}
+.rain-message{
+    max-width:570px;
+    padding:35px 25px;
+    border-radius:35px;
+    text-align:center;
+    background:radial-gradient(ellipse,#170b1ce8,#170b1c99 55%,transparent 75%);
+    animation:rainMessageIn 1.8s ease-out both;
+}
+.rain-message small{
+    display:block;
+    color:#f5d6a4;
+    font-size:11px;
+    letter-spacing:4px;
+}
+.rain-message h2{
+    margin:15px 0;
+    color:#ffcbdf;
+    font:700 clamp(45px,8vw,90px)/1.15 "Dancing Script",cursive;
+    text-shadow:0 0 28px #ff83b988;
+}
+.rain-message p{
+    color:#ffe4ef;
+    font-size:clamp(12px,2.3vw,15px);
+    line-height:2;
+}
+.rain-message .rain-heart{
+    display:block;
+    margin-top:17px;
+    font-size:30px;
+    animation:rainHeartbeat 3s ease-in-out infinite;
+}
+.rain-controls{
+    position:absolute;
+    z-index:30;
+    right:18px;
+    top:18px;
+    display:flex;
+    gap:10px;
+}
+.rain-controls button{
+    padding:10px 15px;
+    border:1px solid #ffbfd777;
+    border-radius:30px;
+    background:#2c152cdd;
+    color:#fff1f6;
+    font:600 12px "Be Vietnam Pro",sans-serif;
+    cursor:pointer;
+}
+@keyframes rainMessageIn{
+    from{opacity:0;transform:translateY(35px) scale(.92)}
+    to{opacity:1;transform:none}
+}
+@keyframes rainHeartbeat{
+    50%{transform:scale(1.2)}
+}
+@media(max-width:600px){
+    .rain-message{padding:25px 12px}
+    .rain-controls{top:12px;right:12px}
+    .rain-controls button{padding:9px 12px;font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){
+    .rain-message,.rain-heart{animation:none!important}
+}
+</style>
+
+<div id="memoryRain" aria-hidden="true">
+    <canvas id="memoryRainCanvas"></canvas>
+
+    <div class="rain-center">
+        <div class="rain-message">
+            <small>HAPPY WOMEN'S DAY • 20/10</small>
+            <h2>Anh Yêu Vợ<br>Mãi Mãi ❤️</h2>
+            <p>
+                Cảm ơn em vì đã đến bên anh.<br>
+                Mong rằng mỗi ngày của em đều thật hạnh phúc.<br>
+                Yêu vợ nhiều lắm! ♡
+            </p>
+            <span class="rain-heart">💗</span>
+        </div>
+    </div>
+
+    <div class="rain-controls">
+        <button id="rainReplay">💞 Thả thêm ảnh</button>
+        <button id="rainClose">✕ Quay lại</button>
+    </div>
+</div>
+
+<script>
+(function(){
+    "use strict";
+
+    const rain=document.getElementById("memoryRain");
+    const canvas=document.getElementById("memoryRainCanvas");
+    const ctx=canvas.getContext("2d");
+
+    // Giữ nguyên đúng 5 ảnh vợ
+    const photos=[
+        "https://cdn.upanhlaylink.com/i/sJ1NWxQT.jpg",
+        "https://cdn.upanhlaylink.com/i/kJB46lgl.jpg",
+        "https://cdn.upanhlaylink.com/i/7LqirxG0.jpg",
+        "https://cdn.upanhlaylink.com/i/NKVBasgN.jpg",
+        "https://cdn.upanhlaylink.com/i/rnhrr0PQ.jpg"
+    ];
+
+    const random=(min,max)=>min+Math.random()*(max-min);
+    const items=[];
+    const stars=[];
+    const imageCache=[];
+
+    let active=false;
+    let raf=0;
+    let last=0;
+    let photoClock=0;
+    let petalClock=0;
+    let W=innerWidth;
+    let H=innerHeight;
+    let photoIndex=0;
+
+    const mobile=()=>W<=700;
+    const reduce=matchMedia("(prefers-reduced-motion:reduce)");
+
+    // Tải ảnh một lần, sau đó tái sử dụng
+    photos.forEach(src=>{
+        const img=new Image();
+        img.decoding="async";
+        img.src=src;
+        imageCache.push(img);
+    });
+
+    function resize(){
+        W=innerWidth;
+        H=innerHeight;
+
+        const ratio=Math.min(devicePixelRatio||1,1.5);
+
+        canvas.width=Math.round(W*ratio);
+        canvas.height=Math.round(H*ratio);
+        ctx.setTransform(ratio,0,0,ratio,0,0);
+
+        stars.length=0;
+
+        const count=mobile()?45:95;
+
+        for(let i=0;i<count;i++){
+            stars.push({
+                x:random(0,W),
+                y:random(0,H),
+                r:random(.5,1.7),
+                alpha:random(.15,.7),
+                phase:random(0,6.28)
+            });
+        }
+    }
+
+    function makeItem(type,initial=false){
+        if(!active)return;
+
+        const isPhoto=type==="photo";
+        const count=items.filter(item=>item.type==="photo").length;
+        const limit=mobile()?4:7;
+
+        if(isPhoto&&count>=limit)return;
+        if(items.length>(mobile()?28:48))return;
+
+        const el=document.createElement("div");
+        el.className=isPhoto?"rain-photo":"rain-petal";
+
+        const size=isPhoto
+            ?random(mobile()?82:115,mobile()?125:170)
+            :random(10,25);
+
+        if(isPhoto){
+            const img=document.createElement("img");
+            img.alt="Ảnh kỷ niệm của vợ";
+            img.decoding="async";
+
+            // Xoay vòng cả 5 ảnh, không bỏ sót ảnh nào
+            img.src=photos[photoIndex%photos.length];
+            photoIndex++;
+
+            el.style.setProperty("--photo-width",size+"px");
+            el.appendChild(img);
+        }else{
+            el.style.setProperty("--petal-size",size+"px");
+
+            if(Math.random()<.18){
+                el.classList.add("heart");
+                el.textContent=Math.random()>.5?"♡":"♥";
+            }
+        }
+
+        const depth=random(.65,1.15);
+        const speed=isPhoto
+            ?H/random(7.5,11.5)
+            :H/random(6,13);
+
+        const item={
+            el,
+            type,
+            x:random(-size*.3,W-size*.5),
+            y:initial?random(-H,0):-size*1.7,
+            size,
+            depth,
+            speed:speed*depth,
+            vx:random(-8,8),
+            angle:random(-22,22),
+            spin:random(-8,8),
+            phase:random(0,Math.PI*2),
+            sway:random(isPhoto?12:20,isPhoto?34:65),
+            frequency:random(.45,1.15),
+            age:random(0,4),
+            opacity:depth<.8?.72:1
+        };
+
+        el.style.opacity=item.opacity;
+        el.style.zIndex=isPhoto
+            ?(depth>.95?"12":"5")
+            :"7";
+
+        rain.appendChild(el);
+        items.push(item);
+    }
+
+    function removeItem(index){
+        items[index].el.remove();
+        items.splice(index,1);
+    }
+
+    function renderStars(time){
+        ctx.clearRect(0,0,W,H);
+
+        for(const star of stars){
+            const a=star.alpha*(
+                .7+.3*Math.sin(time*.001+star.phase)
+            );
+
+            ctx.globalAlpha=a;
+            ctx.fillStyle="#ffe3ef";
+            ctx.beginPath();
+            ctx.arc(star.x,star.y,star.r,0,Math.PI*2);
+            ctx.fill();
+        }
+
+        ctx.globalAlpha=1;
+    }
+
+    // Chuyển động dựa trên thời gian thực:
+    // rơi theo trọng lực nhẹ, gió đổi hướng từ từ
+    function animate(time){
+        if(!active)return;
+
+        raf=requestAnimationFrame(animate);
+
+        if(document.hidden){
+            last=0;
+            return;
+        }
+
+        if(!last)last=time;
+
+        const dt=Math.min((time-last)/1000,.04);
+        last=time;
+
+        photoClock+=dt;
+        petalClock+=dt;
+
+        if(photoClock>(mobile()?2.3:1.7)){
+            photoClock=0;
+            makeItem("photo");
+        }
+
+        if(petalClock>(mobile()?.32:.2)){
+            petalClock=0;
+            makeItem("petal");
+        }
+
+        if(!reduce.matches){
+            renderStars(time);
+        }
+
+        const wind=Math.sin(time*.00018)*12+
+                   Math.sin(time*.00043)*6;
+
+        for(let i=items.length-1;i>=0;i--){
+            const item=items[i];
+
+            item.age+=dt;
+            item.y+=item.speed*dt;
+
+            // Gió thổi theo từng nhịp, không đổi hướng đột ngột
+            item.x+=(item.vx+wind*.25)*dt;
+
+            const sway=Math.sin(
+                item.age*item.frequency*2+
+                item.phase
+            )*item.sway;
+
+            const rotation=item.angle+
+                Math.sin(item.age*.8+item.phase)*12+
+                item.spin*item.age*.3;
+
+            const flutter=item.type==="petal"
+                ?Math.cos(item.age*2.4+item.phase)*.25+1
+                :1;
+
+            item.el.style.transform=
+                "translate3d("+
+                (item.x+sway).toFixed(1)+"px,"+
+                item.y.toFixed(1)+"px,0) "+
+                "rotate("+rotation.toFixed(1)+"deg) "+
+                "scaleX("+flutter.toFixed(2)+")";
+
+            if(item.y>H+item.size*2){
+                removeItem(i);
+            }
+        }
+    }
+
+    function startRain(){
+        if(active)return;
+
+        active=true;
+        rain.classList.add("active");
+        rain.setAttribute("aria-hidden","false");
+
+        resize();
+
+        // Có ảnh xuất hiện ngay, không phải chờ lâu
+        for(let i=0;i<(mobile()?3:5);i++){
+            makeItem("photo",true);
+        }
+
+        for(let i=0;i<(mobile()?12:20);i++){
+            makeItem("petal",true);
+        }
+
+        photoClock=0;
+        petalClock=0;
+        last=0;
+
+        raf=requestAnimationFrame(animate);
+    }
+
+    function stopRain(){
+        active=false;
+        cancelAnimationFrame(raf);
+
+        rain.classList.remove("active");
+        rain.setAttribute("aria-hidden","true");
+
+        for(const item of items)item.el.remove();
+        items.length=0;
+
+        ctx.clearRect(0,0,W,H);
+        last=0;
+    }
+
+    // Chặn hiệu ứng trái tim 3 giây cũ
+    // và thay bằng màn mưa ảnh mới
+    document.addEventListener("click",event=>{
+        const button=event.target.closest("#finalBtn");
+
+        if(!button)return;
+
+        event.preventDefault();
+        event.stopImmediatePropagation();
+
+        startRain();
+    },true);
+
+    document.getElementById("rainClose")
+        .addEventListener("click",stopRain);
+
+    document.getElementById("rainReplay")
+        .addEventListener("click",()=>{
+            for(let i=0;i<3;i++){
+                makeItem("photo");
+            }
+            for(let i=0;i<12;i++){
+                makeItem("petal");
+            }
+        });
+
+    window.addEventListener("resize",()=>{
+        if(active)resize();
+    },{passive:true});
+
+    document.addEventListener("visibilitychange",()=>{
+        last=0;
+    });
+
+    console.info("Memory Rain 20/10 ready ❤️");
+})();
+</script>
 </body>
 </html>
