@@ -1,5 +1,4 @@
- <style>
-        body {
+      body {
             background-color: #000000;
             margin: 0;
             height: 100vh;
@@ -3534,7 +3533,6 @@ body.luck-scene #khung-mat { z-index: 6; }
 #luck-stage .luck-fall-field { z-index:2; }
 #luck-front-field { z-index:7; }
 
-</style>
 <style id="tiny-mobile-branch">
 /* ============================================================
    NHÁNH HIỂN THỊ RIÊNG CHO ĐIỆN THOẠI
@@ -3733,8 +3731,6 @@ body.luck-scene #khung-mat { z-index: 6; }
     #tiny-lyric-zone .lyric-line.compact { font-size: clamp(13px,2.7vh,16px); }
 }
 
-</style>
-
 <style id="tiny-vinyl-desktop">
 /* Chỉ bổ sung trang trí ở cảnh nụ cười phiên bản laptop; không tác động JS/nhạc/lyric. */
 #smile-stage .tiny-vinyl-scene {
@@ -3821,7 +3817,6 @@ body.luck-scene #khung-mat { z-index: 6; }
 @media screen and (max-width: 1024px), (hover: none) and (pointer: coarse) {
     #smile-stage .tiny-vinyl-scene { display:none!important; }
 }
-</style>
 
 <style id="tiny-kado-layout-desktop">
 /* Chỉ tác động cảnh cuối trên laptop; nhánh mobile và JS/MP3 giữ nguyên. */
@@ -4074,7 +4069,6 @@ body.clover-scene #vien-vu-tru {
     #text-10, #text-11 {top:4%;font-size:clamp(18px,4.6vh,26px);}
 }
 
-</style>
 
 <style id="luck-scene-visibility-tuning">
 /* Chỉ thay đổi cảnh chúc may mắn. Không tác động những cảnh trước. */
@@ -4140,7 +4134,6 @@ body.clover-scene #vien-vu-tru {
         line-height:1.28;
     }
 }
-</style>
 
 <style id="last-two-clover-scenes-polish">
 /* Center the full pair, not just the individual eyes; do not affect the preceding scene. */
@@ -4199,7 +4192,6 @@ body.clover-scene #vien-vu-tru {
     }
     #luck-stage .luck-bg-clover {left:75%; top:63%; width:min(23vw,240px);}
 }
-</style>
 
 <style id="tiny-question-final-scene">
 #text-13 {
@@ -4357,8 +4349,6 @@ body.question-scene-body { background: #000; }
         transform: translate(0, 0) rotate(-7deg) scale(.60) !important;
     }
 }
-</style>
-
 
 <style id="tiny-question-diagonal-final-fix">
 /* Dùng đường chéo đi xuống bên phải theo nét trắng người dùng vẽ.
@@ -4493,8 +4483,6 @@ body.question-scene-body { background: #000; }
         transform: translate(0,0) rotate(13deg) scale(.60) !important;
     }
 }
-</style>
-
 
 <style id="tiny-question-user-fix">
 /* giảm độ chói chữ, vẫn giữ phát sáng nhẹ */
@@ -4591,8 +4579,6 @@ body.question-scene-body { background: #000; }
         75% { transform: translate(2px,0) rotate(12.8deg) scale(.601); }
     }
 }
-</style>
-
 
 <style id="tiny-question-waguri-wink-final">
 /* Bỏ toàn bộ nét cong CSS cũ; trạng thái nhắm giờ do SVG Waguri thật đảm nhiệm. */
@@ -4646,7 +4632,6 @@ body.question-scene-body { background: #000; }
       75% { transform:translate(2px,calc(-4dvh - 1px)) rotate(12.6deg) scale(.681); }
   }
 }
-</style>
 
 
 <style id="question-wink-return-and-slow-blink">
@@ -4655,12 +4640,11 @@ body.question-scene-body { background: #000; }
 #khung-mat.wish-clover.wish-luck.question-one-eye {
   animation: none !important;
 }
-</style>
 <style id="question-only-native-eye-wink-fix">
 #khung-mat.question-one-eye {animation:none!important;transform:translateY(-1vh) scale(.96)!important;}
 #khung-mat.question-one-eye .truc-x .con-mat {animation:none!important;transform-origin:50% 50%;}
 #khung-mat.question-one-eye .truc-x .mat-cong {animation:none!important;}
-</style>
+
 <style id="tiny-question-absolute-angle-blink-fix">
 /* Chỉ cảnh câu hỏi: loại bỏ xoay 14deg từ mọi CSS/animation cũ. */
 #khung-mat.question-one-eye,
@@ -4674,7 +4658,7 @@ body.question-scene-body { background: #000; }
 #khung-mat.question-one-eye .truc-x:last-child > .mat-cong {
   visibility: visible !important;
 }
-</style>
+
 <style id="question-wink-visible-closed-line-fix">
 /* Chỉ cảnh câu hỏi: đường mí mắt gốc vẫn hiển thị lúc hình vuông co lại. */
 #khung-mat.question-one-eye .truc-x:last-child > .mat-cong,
@@ -4693,7 +4677,7 @@ body.question-scene-body { background: #000; }
   stroke-linecap: round !important;
   stroke-linejoin: round !important;
 }
-</style>
+
 <style id="question-wink-arc-anchored-correction">
 /* Cảnh câu hỏi: chỉ hiện nét mí cong trên mắt gốc, không bổ sung hình mắt mới. */
 #khung-mat.question-one-eye .truc-x:last-child > svg.mat-cong {
@@ -4726,7 +4710,6 @@ body.question-scene-body { background: #000; }
    transform-origin: 50% 50% !important;
  }
 }
-</style>
 
 <style id="tiny-share-flight-style">
 /* New share finale only. Older scenes, eyes and their animation remain untouched. */
@@ -5014,7 +4997,6 @@ body.question-scene-body { background: #000; }
 }
 @media(max-height:560px) and (min-width:650px){#share-tiny #khung-mat {--real-eye:52px;gap:52px!important;}}
 @media(max-width:650px) and (max-height:680px){#share-tiny #khung-mat {--real-eye:52px;gap:47px!important;}}
-</style>
 
 
 <style id="tiny-reality-final-style">
@@ -5159,7 +5141,6 @@ body.question-scene-body { background: #000; }
  .reality-mouth {bottom:0;width:43px;}
 }
 @media(prefers-reduced-motion:reduce){.reality-particle,.reality-portal::before,.reality-portal::after,.reality-heart-float,.reality-haze{animation:none!important;}}
-</style>
 
 
 <style id="tiny-extra-wishes-design">
@@ -5266,7 +5247,6 @@ body.question-scene-body { background: #000; }
   #share-flight-scene .share-heading-crossfade > span {transition-duration:.12s!important;transition-delay:0s!important;}
   #share-tiny #khung-mat .tiny-morph-sparkles, #share-tiny #khung-mat .tiny-morph-sparkles * {animation:none!important;opacity:1!important;}
 }
-</style>
 
 <style id="tiny-effects-enhancement-v2">
 /* SVG/Canvas trang trí tối ưu từ các kỹ thuật open-source Anime.js/tsParticles/Canvas Confetti.
@@ -5321,7 +5301,6 @@ body.question-scene-body { background: #000; }
 }
 /* Khoảnh khắc bấm Đồng ý: một đợt sao nhỏ, không che thông báo hoặc nút. */
 #tiny-joy-burst {position:fixed;inset:0;z-index:94;pointer-events:none;width:100%;height:100%;}
-</style>
 
 <style id="tiny-reality-one-piece-eye-fix">
 /* Eyes are still the ORIGINAL Tiny .con-mat nodes. The single SVG path IS the
@@ -5377,7 +5356,7 @@ body.question-scene-body { background: #000; }
 @media (prefers-reduced-motion: reduce) {
     #tiny-reality-eye-host #khung-mat .reality-one-piece-svg {transition:none!important}
 }
-</style>
+
 <style id="tiny-new-landscape-and-fauna">
 /* === CUSTOM FINISH: landscape/orbit, fauna, and caret smile === */
 /* The previous decorative health crosses sat on top of the girl illustration. */
@@ -5461,7 +5440,7 @@ body.question-scene-body { background: #000; }
 #decor-beauty .tiny-orbit-star.tiny-moon {filter:drop-shadow(0 0 11px rgba(240,248,255,.56)) drop-shadow(0 0 27px rgba(169,201,234,.27));}
 #decor-beauty .tiny-orbit-star.tiny-moon .tiny-planet-sphere {filter:drop-shadow(0 0 6px rgba(238,250,255,.36));}
 #decor-beauty .tiny-orbit-trail circle {opacity:.27;filter:drop-shadow(0 0 5px rgba(177,204,243,.27));fill:#bdcfdf;}
-</style>
+
 <style id="tiny-want-crystal-20261014">
 /* Viên pha lê điều ước: lấy cảm hứng từ gradient Auroral và quỹ đạo SVG.
    Chỉ tồn tại trong #decor-want, không làm thay đổi logic/chuyển động của Tiny. */
@@ -5575,7 +5554,7 @@ body.question-scene-body { background: #000; }
 #share-tiny #khung-mat .tiny-folding-smile-svg .smile-morph-fill {
   stroke:#bfffff;stroke-width:1.15;stroke-linejoin:round;
 }
-</style>
+
 
 <style id="tiny-depart-continuity-fix">
 /* Ưu tiên cao hơn quy tắc hiển thị tức thì của share-finale-active.
@@ -5587,7 +5566,7 @@ body.question-scene-body { background: #000; }
 }
 /* Một nhịp khởi động cánh quạt với máy bay độc lập khỏi cảnh nền. */
 body > .share-aircraft-stand.share-takeoff {isolation:isolate;}
-</style>
+
 <style id="tiny-shop-next-style">
 /* Cảnh gian hàng tiếp nối, không chỉnh CSS các cảnh cũ. */
 #tiny-shop-scene{position:fixed;inset:0;z-index:116;visibility:hidden;pointer-events:none;overflow:hidden;isolation:isolate;font-family:'Courier Prime',monospace;color:#f4fdff;opacity:0;transition:opacity 1.05s ease,visibility 0s 1.05s;background:radial-gradient(ellipse 48% 54% at 50% 52%,#1d2144 0%,#0b1632 57%,#040817 100%)}
@@ -5767,7 +5746,6 @@ body > .share-aircraft-stand.share-takeoff {isolation:isolate;}
  #tiny-shop-scene .dalabs-handle{font-size:12px}
 }
 @media(prefers-reduced-motion:reduce){#tiny-shop-scene .dalabs-footer::before,#tiny-shop-scene .dalabs-footer::after{animation:none}}
-</style>
 
 <style id="tiny-reality-moon-rover-style">
 /* Toàn bộ cảnh robot dùng SVG+CSS+JS; không còn khung video hay ảnh nền đen. */
@@ -5816,7 +5794,7 @@ body > .share-aircraft-stand.share-takeoff {isolation:isolate;}
   #tiny-reality-scene .moon-rover-light,
   #tiny-reality-scene .moon-rover-star{animation:none!important}
 }
-</style>
+
 <style id="tiny-shop-magical-upgrade">
 /* Inspired by CSS-based fireflies (yZhanWeather), pastel SVG flowers (Flower UI), star trails (Starfield).
    Effects self-contained, positioned BEHIND shop content. No external dependency. */
@@ -5859,7 +5837,6 @@ body > .share-aircraft-stand.share-takeoff {isolation:isolate;}
 #tiny-shop-scene:not(.shop-visible) .shop-magical-firefly,#tiny-shop-scene:not(.shop-visible) .shop-magical-petal,#tiny-shop-scene:not(.shop-visible) .shop-magic-vines *,#tiny-shop-scene:not(.shop-visible) .shop-stall::before,#tiny-shop-scene:not(.shop-visible) .shop-wish-bridge svg,#tiny-shop-scene:not(.shop-visible) .dalabs-rose{animation-play-state:paused}
 @media(max-width:800px){#tiny-shop-scene .shop-magic-vines{display:none}#tiny-shop-scene .shop-wish-bridge{height:51px;margin:-20px auto -20px}#tiny-shop-scene .dalabs-rose{font-size:56px;opacity:.075}#tiny-shop-scene .shop-stall::before{top:36px;left:8px;right:8px;background-size:28px 16px}}
 @media(prefers-reduced-motion:reduce){#tiny-shop-scene .shop-magical-firefly,#tiny-shop-scene .shop-magical-petal,#tiny-shop-scene .shop-magic-vines *,#tiny-shop-scene .shop-stall::before,#tiny-shop-scene .shop-wish-bridge svg,#tiny-shop-scene .dalabs-rose,#tiny-shop-scene .dalabs-mark{animation:none!important;will-change:auto!important;opacity:.55!important}#tiny-shop-scene .mag-vine{stroke-dashoffset:0!important}}
-</style>
 
 <style id="tiny-dalabs-luminous-upgrade-v2">
 /* DA Labs luminous scene. Inspired by Auroral (CSS moving gradients) and Sparticles (slow glow points).
@@ -5961,7 +5938,7 @@ body > .share-aircraft-stand.share-takeoff {isolation:isolate;}
  #tiny-shop-scene .dalabs-brand-name,#tiny-shop-scene .dalabs-brand-glint::before,
  #tiny-shop-scene .dalabs-tiktok,#tiny-shop-scene .dalabs-tiktok::before{animation:none!important}
 }
-</style>
+
 <style id="tiny-performance-css">
 /* ===== Tiny performance layer: background rendering only ===== */
 /* Hidden scenes do not keep running dozens of offscreen CSS keyframes. */
@@ -5987,7 +5964,6 @@ body > .share-aircraft-stand.share-takeoff {isolation:isolate;}
  .tiny-lite #shop-magical-field .shop-magical-petal:nth-child(3n),
  .tiny-lite #decor-beauty .tiny-beauty-firefly:nth-of-type(3n) {display:none !important;}
 }
-</style>
 
 <style id="tiny-mobile-extreme-css">
 /* Cấu hình mobile-only; laptop / desktop không có lớp tiny-mobile. */
@@ -6095,7 +6071,7 @@ body > .share-aircraft-stand.share-takeoff {isolation:isolate;}
 .tiny-mobile #khung-mat.question-one-eye .con-mat {
     box-shadow:0 0 13px 5px rgba(0,245,255,.48),inset 0 0 12px rgba(255,255,255,.50);
 }
-</style>
+
 <style id="tiny-smooth-transitions-v3">
 /* Tiny Smooth Transitions V3 – isolated decorative work, not Tiny's eyes or words. */
 .tiny-scene-transition #uiverse-starfield #stars,
@@ -6137,7 +6113,7 @@ body > .share-aircraft-stand.share-takeoff {isolation:isolate;}
 .tiny-scene-transition #tiny-shop-scene .shop-magical-star,
 .tiny-scene-transition #tiny-shop-scene .shop-magic-petal,
 .tiny-scene-transition #tiny-shop-scene .shop-aurora {animation-play-state:paused !important;}
-</style>
+
 
 <style id="tiny-mobile-beauty-transition-v4">
 /* V4 – isolate expensive Beauty/Smile/Luck scenery; no desktop changes. */
@@ -6197,7 +6173,7 @@ body > .share-aircraft-stand.share-takeoff {isolation:isolate;}
 .tiny-mobile #question-stage .question-space-haze {filter:none!important;mix-blend-mode:normal!important;animation:none!important}
 .tiny-mobile #question-stage .question-blue-rays {filter:none!important;animation:none!important}
 .tiny-mobile #question-stage .question-blue-glow {filter:none!important}
-</style>
+
 
 <style id="tiny-beauty-mobile-v5-one-scene">
 /* V5: Beauty only, smartphone/tablet only. Desktop and other scenes remain as V4. */
@@ -6239,7 +6215,6 @@ body > .share-aircraft-stand.share-takeoff {isolation:isolate;}
 .tiny-mobile #decor-beauty:not(.is-visible) * {animation-play-state:paused!important}
 /* Shorten overdraw without removing the crossfade itself. */
 .tiny-mobile #decor-beauty {transition:opacity .38s ease-out,visibility .38s!important}
-</style>
 
 <style id="tiny-v6-mobile-clover-transition">
 /* Mobile-only transition budget: keep Tiny's own eye, blinking and clover animations intact. */
@@ -6276,7 +6251,6 @@ body > .share-aircraft-stand.share-takeoff {isolation:isolate;}
 .tiny-mobile.tiny-v6-luck-switch #clover-stage *,
 .tiny-mobile.tiny-v6-luck-switch #clover-stage *::before,
 .tiny-mobile.tiny-v6-luck-switch #clover-stage *::after {animation-play-state:paused !important;}
-</style>
 
 <style id="tiny-waguri-smooth-reveal-v7">
 /* Waguri is revealed only AFTER the video has decoded its first frame. This
@@ -6301,7 +6275,6 @@ body > .share-aircraft-stand.share-takeoff {isolation:isolate;}
     }
     .tiny-mobile #smile-stage.hien-thi.waguri-frame-visible .waguri-figure { opacity: 1 !important; }
 }
-</style>
 
 <style id="tiny-v8-mobile-clover-question" data-performance="mobile-only">
 /* Mobile V8: fewer simultaneous raster surfaces, retain original main animation. */
@@ -6350,7 +6323,7 @@ body > .share-aircraft-stand.share-takeoff {isolation:isolate;}
 .tiny-mobile.tiny-v8-question-enter #question-stage .question-space-haze {
   filter:none !important;
 }
-</style>
+
 <style id="tiny-v9-mobile-staggered-transitions">
 /* V9 — riêng mobile: phần cỏ nền may mắn hiển thị dần thay vì pop. */
 .tiny-mobile #luck-stage {transition:opacity .95s ease-in-out!important;}
@@ -6376,7 +6349,7 @@ body > .share-aircraft-stand.share-takeoff {isolation:isolate;}
 .tiny-mobile #question-stage .question-space-haze {filter:none!important;}
 /* Defer rendering large footer until user actually scrolls toward it. */
 .tiny-mobile #tiny-shop-scene .dalabs-footer {content-visibility:auto;contain-intrinsic-size:auto 460px;}
-</style>
+
 <style id="tiny-v10-desktop-perf">
 
 /* V10 DESKTOP: eliminate animation work in invisible scenes without
@@ -6410,7 +6383,6 @@ html.tiny-desktop-performance.tiny-scene-transition #tiny-shop-scene .dalabs-dre
 html.tiny-desktop-performance .text-layer.hien-thi {will-change:opacity;}
 html.tiny-desktop-performance .reference-wink-star {will-change:transform,opacity;}
 
-</style>
 
 <style id="tiny-v11-mobile-question-arc-visible">
 /* Sửa selector: mắt phải là DIV cuối cùng, KHÔNG phải child cuối vì sau nó còn SVG nụ cười. */
@@ -6444,7 +6416,6 @@ html.tiny-desktop-performance .reference-wink-star {will-change:transform,opacit
     transform-origin:50% 50% !important;
   }
 }
-</style>
 
 <style id="tiny-v12-desktop-beauty-fps">
 /* V12 PC beauty-scene: retain moon, flowers, butterflies and text;
@@ -6504,7 +6475,7 @@ html.tiny-pc-beauty-v12 #uiverse-starfield #stars2,
 html.tiny-pc-beauty-v12 #uiverse-starfield #stars3 {
   animation-play-state:paused!important;
 }
-</style>
+
 
 <!-- Tiny V13: moonless Beauty + light luck-to-question transition; no changes to rover moon -->
 <style id="tiny-v13-scene-finishing">
