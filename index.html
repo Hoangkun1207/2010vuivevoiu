@@ -5,284 +5,254 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#100817">
-<meta name="description" content="Một món quà nhỏ dành cho người con gái anh yêu nhất.">
-<title>Gửi Vợ Yêu | Happy Women's Day 20/10 ❤️</title>
+<title>Gửi Vợ Yêu ❤️ | 20/10</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Dancing+Script:wght@500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Dancing+Script:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
     --bg:#100817;
-    --bg2:#1c0b22;
-    --pink:#ff8db8;
+    --pink:#ff91bb;
     --rose:#e85c96;
-    --blush:#ffd5e5;
-    --cream:#fff4e8;
     --gold:#f5d6a4;
-    --white:#fff9fc;
-    --muted:#e6c6d5;
+    --cream:#fff3e8;
+    --text:#ffeaf2;
+    --muted:#e5c2d2;
     --ease:cubic-bezier(.22,1,.36,1);
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{height:100%;background:var(--bg)}
-body{
-    min-height:100%;
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{
+    width:100%;
+    height:100%;
     overflow:hidden;
-    color:var(--white);
+    background:var(--bg);
+}
+body{
+    color:var(--text);
     font-family:"Be Vietnam Pro",sans-serif;
     -webkit-tap-highlight-color:transparent;
 }
-button{font:inherit;cursor:pointer}
+button{
+    font:inherit;
+    cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+}
 button:focus-visible{
     outline:2px solid var(--gold);
-    outline-offset:5px;
+    outline-offset:4px;
 }
-img{display:block;max-width:100%}
-::selection{background:#ff8db8;color:#240b1d}
-#sky,#effects{
+canvas{
     position:fixed;
     inset:0;
     width:100%;
     height:100%;
     pointer-events:none;
 }
-#sky{z-index:1}
-#effects{z-index:40}
-.ambient{
+#stars{z-index:1}
+#particles{z-index:30}
+.background{
     position:fixed;
-    inset:-25%;
+    inset:0;
     z-index:0;
     pointer-events:none;
     background:
-        radial-gradient(ellipse at 25% 30%,#5d234d55,transparent 38%),
-        radial-gradient(ellipse at 80% 65%,#70304c33,transparent 42%),
-        radial-gradient(ellipse at 50% 100%,#47223f44,transparent 45%);
-    animation:ambientMove 18s ease-in-out infinite alternate;
+        radial-gradient(ellipse at 15% 20%,#6c285244,transparent 45%),
+        radial-gradient(ellipse at 85% 75%,#8c366044,transparent 50%),
+        linear-gradient(145deg,#100817,#211025 65%,#14091c);
 }
-.grain{
+.aurora{
+    position:absolute;
+    width:65vmax;
+    height:65vmax;
+    border-radius:50%;
+    background:radial-gradient(circle,#e85c9620,transparent 70%);
+    animation:auroraMove 20s ease-in-out infinite alternate;
+}
+.aurora.one{left:-30%;top:-35%}
+.aurora.two{
+    right:-30%;
+    bottom:-40%;
+    animation-delay:-10s;
+}
+@keyframes auroraMove{
+    to{transform:translate3d(12%,10%,0) scale(1.12)}
+}
+.topbar{
     position:fixed;
-    inset:0;
-    z-index:2;
+    z-index:50;
+    top:0;
+    left:0;
+    right:0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px clamp(18px,5vw,60px);
     pointer-events:none;
-    opacity:.12;
-    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E");
 }
-@keyframes ambientMove{
-    to{transform:translate(4%,-3%) rotate(8deg)}
+.brand{
+    font:700 23px "Dancing Script",cursive;
+    color:#ffe0ec;
+}
+.brand span{color:var(--pink)}
+.music-btn{
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    border:1px solid #ffb9d566;
+    background:#2b1228e8;
+    color:white;
+    font-size:21px;
+    pointer-events:auto;
+}
+.music-btn.playing{
+    box-shadow:0 0 22px #ff8db866;
+    animation:musicPulse 2s infinite;
+}
+@keyframes musicPulse{
+    50%{box-shadow:0 0 35px #ff8db899}
 }
 .scene{
     position:fixed;
     inset:0;
     z-index:3;
     display:flex;
-    flex-direction:column;
     align-items:center;
     justify-content:center;
-    padding:76px 20px 64px;
+    padding:76px 20px 70px;
     text-align:center;
     opacity:0;
     visibility:hidden;
     pointer-events:none;
-    transform:translateY(22px) scale(.985);
+    transform:translate3d(0,24px,0) scale(.985);
     transition:
-        opacity .85s ease,
-        transform 1s var(--ease),
-        visibility .85s;
+        opacity .7s ease,
+        transform .9s var(--ease),
+        visibility .7s;
 }
 .scene.active{
     opacity:1;
     visibility:visible;
     pointer-events:auto;
-    transform:none;
+    transform:translate3d(0,0,0) scale(1);
 }
-.scene-content{
-    position:relative;
-    z-index:3;
+.scene-inner{
     width:100%;
-    max-width:1080px;
+    max-width:1050px;
     margin:auto;
 }
-.script{font-family:"Dancing Script",cursive}
-.serif{font-family:"Playfair Display",serif}
 .eyebrow{
-    font-size:11px;
-    letter-spacing:4px;
-    text-transform:uppercase;
     color:var(--gold);
-    font-weight:600;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:3px;
+    text-transform:uppercase;
 }
 .heading{
-    font-family:"Dancing Script",cursive;
-    font-weight:700;
-    font-size:clamp(43px,7vw,85px);
-    line-height:1.18;
-    color:var(--blush);
-    text-shadow:0 0 38px #e85c9655;
+    font:700 clamp(43px,7vw,82px)/1.2 "Dancing Script",cursive;
+    color:#ffd5e6;
+    text-shadow:0 0 30px #e85c9644;
 }
 .subtitle{
+    max-width:590px;
+    margin:14px auto 0;
     color:var(--muted);
-    font-size:clamp(12px,1.5vw,15px);
+    font-size:clamp(12px,2.5vw,15px);
     line-height:2;
-    max-width:580px;
-    margin-inline:auto;
 }
 .btn{
     position:relative;
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    gap:10px;
     min-height:48px;
-    padding:13px 29px;
-    border:1px solid #ffd2e2a0;
+    padding:13px 26px;
+    border:1px solid #ffcfdfaa;
     border-radius:100px;
-    background:linear-gradient(135deg,#ff9dc5,#e45a98);
-    color:#fff;
+    background:linear-gradient(135deg,#ff9ec6,#df558f);
+    color:white;
     font-size:13px;
     font-weight:700;
-    box-shadow:0 10px 34px #e85c9655,inset 0 1px #ffffff80;
-    transition:transform .3s,box-shadow .3s;
+    box-shadow:0 10px 28px #e85c9644;
+    transition:transform .25s,box-shadow .25s;
 }
-.btn:hover{
-    transform:translateY(-3px);
-    box-shadow:0 15px 45px #e85c9680;
-}
-.btn:active{transform:scale(.97)}
-.btn.outline{
-    background:#ffffff0a;
-    border-color:#ffd1e066;
-    box-shadow:none;
-    backdrop-filter:blur(12px);
-}
-.scene-actions{
+.btn:active{transform:scale(.96)}
+.btn:hover{box-shadow:0 14px 35px #e85c9677}
+.actions{
     display:flex;
     justify-content:center;
     gap:12px;
     flex-wrap:wrap;
     margin-top:25px;
 }
-.topbar{
-    position:fixed;
-    z-index:50;
-    left:0;
-    right:0;
-    top:0;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:18px clamp(18px,5vw,65px);
-    pointer-events:none;
-}
-.brand{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    color:#ffe6ee;
-    font-family:"Dancing Script",cursive;
-    font-size:22px;
-    pointer-events:auto;
-}
-.brand span{color:#ff8db8}
-.music-btn{
-    width:43px;
-    height:43px;
-    display:grid;
-    place-items:center;
-    border:1px solid #ffbbd65c;
-    border-radius:50%;
-    background:#241022bb;
-    color:white;
-    font-size:18px;
-    backdrop-filter:blur(14px);
-    pointer-events:auto;
-}
-.music-btn.playing{
-    box-shadow:0 0 25px #ff82b866;
-    animation:musicPulse 2s infinite;
-}
-@keyframes musicPulse{
-    50%{box-shadow:0 0 35px #ff82b8aa}
-}
 .progress{
     position:fixed;
     z-index:49;
-    bottom:22px;
+    bottom:24px;
     left:50%;
     transform:translateX(-50%);
     display:flex;
     align-items:center;
-    gap:10px;
+    gap:9px;
 }
 .progress button{
     width:7px;
     height:7px;
     border:0;
-    border-radius:50%;
-    background:#ffffff4d;
-    transition:.4s;
+    border-radius:20px;
+    background:#ffffff55;
+    transition:width .35s,background .35s;
 }
 .progress button.active{
-    width:27px;
-    border-radius:10px;
+    width:25px;
     background:var(--pink);
-    box-shadow:0 0 12px var(--pink);
+    box-shadow:0 0 12px #ff91bb88;
 }
-.progress button:disabled{cursor:default}
-.float-petal{
+.floating-petal{
     position:fixed;
     z-index:4;
+    top:-45px;
     pointer-events:none;
-    top:-50px;
-    color:#ffabc9;
-    opacity:.6;
+    color:#ffb5d0;
     animation:petalFall linear forwards;
 }
 @keyframes petalFall{
-    0%{transform:translate3d(0,-30px,0) rotate(0);opacity:0}
-    10%{opacity:.7}
-    90%{opacity:.7}
-    100%{transform:translate3d(var(--drift),110vh,0) rotate(540deg);opacity:0}
+    0%{opacity:0;transform:translate3d(0,-30px,0) rotate(0)}
+    12%{opacity:.7}
+    85%{opacity:.7}
+    100%{
+        opacity:0;
+        transform:translate3d(var(--drift),110vh,0) rotate(480deg);
+    }
 }
 @keyframes float{
-    0%,100%{transform:translateY(0)}
-    50%{transform:translateY(-12px)}
-}
-@keyframes reveal{
-    from{opacity:0;transform:translateY(30px)}
-    to{opacity:1;transform:translateY(0)}
+    0%,100%{transform:translate3d(0,0,0)}
+    50%{transform:translate3d(0,-12px,0)}
 }
 @keyframes breathe{
     0%,100%{transform:scale(1)}
     50%{transform:scale(1.045)}
 }
 
-/* ============================
-   SCENE 1: MÓN QUÀ BÍ MẬT
-============================ */
-#scene1{
-    background:
-        radial-gradient(circle at 50% 55%,#4c1c4055,transparent 45%);
-}
+/* CẢNH 1 - HỘP QUÀ */
 .intro-badge{
     display:inline-block;
     padding:9px 18px;
-    border:1px solid #f4cba455;
-    border-radius:30px;
-    font-size:11px;
+    border:1px solid #f5d6a455;
+    border-radius:40px;
     color:var(--gold);
-    letter-spacing:3px;
-    margin-bottom:25px;
+    font-size:10px;
+    letter-spacing:2px;
+    margin-bottom:20px;
 }
-.intro-gift{
+.gift{
     position:relative;
     display:block;
     width:190px;
     height:205px;
-    margin:0 auto 20px;
+    margin:0 auto 15px;
     border:0;
     background:transparent;
     animation:float 4s ease-in-out infinite;
-    filter:drop-shadow(0 18px 32px #e85c9650);
 }
 .gift-box{
     position:absolute;
@@ -290,17 +260,17 @@ img{display:block;max-width:100%}
     height:115px;
     left:20px;
     bottom:15px;
-    border-radius:7px 7px 15px 15px;
+    border-radius:8px 8px 15px 15px;
     background:linear-gradient(120deg,#e7669a,#ffacd0 45%,#c73c7b);
-    box-shadow:inset -12px -8px 25px #9e245b55;
+    box-shadow:0 18px 45px #e85c9644,inset -12px -8px 25px #9e245b55;
 }
 .gift-box:before{
     content:"";
     position:absolute;
+    left:calc(50% - 14px);
     width:28px;
     height:100%;
-    left:calc(50% - 14px);
-    background:linear-gradient(90deg,#f9d8a1,#fff1c7,#d9a868);
+    background:linear-gradient(90deg,#e7b971,#fff1c7,#d9a868);
 }
 .gift-lid{
     position:absolute;
@@ -317,79 +287,63 @@ img{display:block;max-width:100%}
 .gift-lid:after{
     content:"";
     position:absolute;
-    width:29px;
-    height:100%;
     left:calc(50% - 14px);
+    width:28px;
+    height:100%;
     background:#f9dfae;
 }
 .gift-bow{
     position:absolute;
-    z-index:2;
     left:50%;
     bottom:155px;
     transform:translateX(-50%);
-    font-size:62px;
-    line-height:1;
-    filter:drop-shadow(0 4px 5px #a64770);
-    transition:1s var(--ease);
+    font-size:60px;
+    transition:transform 1s var(--ease),opacity .7s;
 }
-.intro-gift.open .gift-lid{
+.gift.open .gift-lid{
     transform:translate(-45px,-95px) rotate(-35deg);
     opacity:0;
 }
-.intro-gift.open .gift-bow{
-    transform:translate(-50%,-120px) rotate(35deg) scale(.5);
+.gift.open .gift-bow{
+    transform:translate(-50%,-110px) rotate(30deg) scale(.5);
     opacity:0;
 }
-.intro-heading{margin-bottom:14px}
-.intro-message{
-    max-width:440px;
-    margin:auto;
-    color:#ead0dc;
-    line-height:2;
-    font-size:14px;
-}
-.intro-date{
-    font-family:"Playfair Display",serif;
+.intro-text{
+    max-width:450px;
+    margin:12px auto;
+    color:var(--muted);
     font-size:13px;
-    letter-spacing:5px;
-    color:var(--gold);
-    margin-top:20px;
+    line-height:2;
 }
-.touch-hint{
+.date{
+    margin-top:20px;
+    color:var(--gold);
+    letter-spacing:5px;
+}
+.hint{
+    margin-top:14px;
+    color:#e8b9ce;
     font-size:11px;
-    color:#e4b4c9;
-    margin-top:12px;
     animation:hintPulse 2.5s infinite;
 }
-@keyframes hintPulse{50%{opacity:.4}}
+@keyframes hintPulse{50%{opacity:.45}}
 
-/* ============================
-   SCENE 2: KHU VƯỜN HOA
-============================ */
-#scene2{
-    background:
-        radial-gradient(ellipse at 50% 70%,#5a253c44,transparent 60%);
-}
+/* CẢNH 2 - BÓ HOA */
 .flower-layout{
     display:flex;
     align-items:center;
     justify-content:center;
-    gap:clamp(15px,4vw,65px);
+    gap:clamp(15px,4vw,60px);
     text-align:left;
 }
-.flower-copy{
-    width:43%;
-    max-width:430px;
-}
-.flower-copy .heading{margin:16px 0}
+.flower-copy{width:44%;max-width:440px}
+.flower-copy .heading{margin:15px 0}
 .flower-copy .subtitle{margin:0}
-.flower-copy .scene-actions{justify-content:flex-start}
+.flower-copy .actions{justify-content:flex-start}
 .flower-art{
     position:relative;
     width:min(45vw,430px);
-    height:min(67vh,570px);
-    flex-shrink:0;
+    height:min(65vh,560px);
     display:grid;
     place-items:center;
     animation:float 6s ease-in-out infinite;
@@ -400,14 +354,14 @@ img{display:block;max-width:100%}
     aspect-ratio:1;
     border-radius:50%;
     background:radial-gradient(circle,#ff8cbd38,transparent 70%);
-    filter:blur(15px);
+    animation:breathe 6s infinite;
 }
 .flower-art svg{
     position:relative;
     width:100%;
     height:100%;
     overflow:visible;
-    filter:drop-shadow(0 20px 25px #0008);
+    filter:drop-shadow(0 15px 20px #0006);
 }
 .rose-head{
     transform-box:fill-box;
@@ -416,7 +370,12 @@ img{display:block;max-width:100%}
 }
 .rose-head:nth-child(even){animation-delay:-2s}
 @keyframes roseBreathe{
-    50%{transform:scale(1.055) rotate(2deg)}
+    50%{transform:scale(1.045) rotate(2deg)}
+}
+.flower-note{
+    margin-top:15px;
+    color:#ffd1e2;
+    font:600 25px "Dancing Script",cursive;
 }
 .flower-glitter{
     position:absolute;
@@ -424,28 +383,17 @@ img{display:block;max-width:100%}
     font-size:22px;
     animation:float 3s infinite;
 }
-.flower-glitter.one{left:7%;top:20%}
-.flower-glitter.two{right:5%;top:32%;animation-delay:-1s}
-.flower-glitter.three{left:16%;bottom:27%;animation-delay:-2s}
-.flower-note{
-    margin-top:17px;
-    font-family:"Dancing Script",cursive;
-    color:#ffd1e2;
-    font-size:26px;
-}
+.flower-glitter.one{left:5%;top:20%}
+.flower-glitter.two{right:4%;top:32%;animation-delay:-1s}
+.flower-glitter.three{left:16%;bottom:25%;animation-delay:-2s}
 
-/* ============================
-   SCENE 3: ALBUM KỶ NIỆM
-============================ */
-#scene3{
-    background:radial-gradient(ellipse at 50% 50%,#391c3855,transparent 65%);
-}
-.album-header{margin-bottom:18px}
-.album-header .heading{font-size:clamp(38px,5.5vw,65px)}
+/* CẢNH 3 - ALBUM */
+.album-header{margin-bottom:20px}
+.album-header .heading{font-size:clamp(38px,6vw,65px)}
 .album-stage{
     position:relative;
     width:min(90vw,790px);
-    height:min(49vh,410px);
+    height:min(48vh,410px);
     margin:0 auto;
     perspective:1200px;
 }
@@ -464,30 +412,29 @@ img{display:block;max-width:100%}
         translateX(var(--offset))
         rotate(var(--rotation))
         scale(var(--scale));
-    transition:transform .85s var(--ease),box-shadow .5s,opacity .5s;
-    cursor:pointer;
+    transition:transform .85s var(--ease),opacity .5s;
     z-index:var(--z);
+    backface-visibility:hidden;
 }
 .polaroid img{
     width:100%;
     height:100%;
     object-fit:cover;
-    background:#f1c9d9;
+    background:#f2c5d6;
 }
-.polaroid .photo-caption{
+.photo-caption{
     position:absolute;
     left:0;
     bottom:9px;
     width:100%;
-    font-family:"Dancing Script",cursive;
-    font-size:clamp(15px,2vw,23px);
-    color:#9d5473;
     text-align:center;
+    font:600 clamp(15px,2vw,23px) "Dancing Script",cursive;
+    color:#9d5473;
 }
 .polaroid.selected{
     transform:translate(-50%,-50%) rotate(0) scale(1.12);
-    z-index:15;
-    box-shadow:0 25px 60px #000b,0 0 35px #ff9bc777;
+    z-index:20;
+    box-shadow:0 22px 50px #000a,0 0 28px #ff9bc755;
 }
 .album-note{
     color:#e5c1d3;
@@ -496,45 +443,27 @@ img{display:block;max-width:100%}
 }
 .album-controls{
     display:flex;
-    justify-content:center;
     align-items:center;
-    gap:20px;
-    margin-top:12px;
+    justify-content:center;
+    gap:22px;
+    margin-top:13px;
 }
 .album-arrow{
-    width:39px;
-    height:39px;
+    width:40px;
+    height:40px;
     border-radius:50%;
     border:1px solid #ffbfd877;
     background:#ffffff12;
     color:white;
-    font-size:23px;
+    font-size:24px;
 }
-.album-count{font-size:12px;color:var(--gold)}
+.album-count{
+    color:var(--gold);
+    font-size:12px;
+}
 
-/* ============================
-   SCENE 4: BẦU TRỜI YÊU THƯƠNG
-============================ */
-#scene4{
-    overflow:hidden;
-    background:radial-gradient(ellipse at center,#48213c66,transparent 65%);
-}
-.love-center{
-    position:relative;
-    z-index:5;
-    width:min(85vw,540px);
-    padding:30px 15px;
-    pointer-events:none;
-}
-.love-center:before{
-    content:"";
-    position:absolute;
-    z-index:-1;
-    inset:-30%;
-    background:radial-gradient(ellipse,#140918dd,transparent 68%);
-}
-.love-center .heading{font-size:clamp(45px,7vw,85px)}
-.love-center .subtitle{margin-top:15px}
+/* CẢNH 4 - LỜI YÊU */
+#scene4{overflow:hidden}
 .love-cloud{
     position:absolute;
     inset:0;
@@ -545,42 +474,95 @@ img{display:block;max-width:100%}
     position:absolute;
     left:var(--x);
     top:var(--y);
+    color:#ffb2d1;
     font-size:var(--size);
     opacity:var(--opacity);
-    color:#ffb2d1;
-    text-shadow:0 0 12px #ff6baa77;
     white-space:nowrap;
+    text-shadow:0 0 10px #ff6baa66;
     animation:loveDrift var(--duration) ease-in-out infinite alternate;
     animation-delay:var(--delay);
-    will-change:transform;
 }
-.love-item.heart{filter:drop-shadow(0 0 9px #ff6baa)}
 @keyframes loveDrift{
     from{transform:translate3d(-12px,14px,0) rotate(-5deg)}
     to{transform:translate3d(15px,-20px,0) rotate(5deg)}
 }
-#scene4 .scene-actions{
+.love-center{
+    position:relative;
+    z-index:5;
+    max-width:540px;
+    margin:auto;
+    padding:30px 15px;
+}
+.love-center:before{
+    content:"";
     position:absolute;
-    z-index:7;
-    bottom:10%;
+    z-index:-1;
+    inset:-20%;
+    background:radial-gradient(ellipse,#140918ee,transparent 70%);
+}
+.love-center .heading{font-size:clamp(45px,8vw,85px)}
+#scene4 .actions{
+    position:absolute;
+    bottom:11%;
     left:0;
     width:100%;
-    pointer-events:auto;
 }
 
-/* ============================
-   SCENE 5: LÁ THƯ
-============================ */
-#scene5{
-    background:radial-gradient(circle at center,#52263f55,transparent 70%);
+/* CẢNH 5 - ĐIỀU ƯỚC */
+.wish-photo{
+    position:relative;
+    width:min(56vw,250px);
+    aspect-ratio:1;
+    margin:20px auto;
+    padding:9px;
+    border:2px solid #ffd0e0;
+    border-radius:50%;
+    box-shadow:0 0 30px #ff82b855,0 0 75px #ff82b822;
+    animation:float 5s ease-in-out infinite;
 }
+.wish-photo:before{
+    content:"";
+    position:absolute;
+    inset:-13px;
+    border:1px dashed #f5d6a477;
+    border-radius:50%;
+    animation:rotateRing 30s linear infinite;
+}
+@keyframes rotateRing{to{transform:rotate(360deg)}}
+.wish-photo img{
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    object-fit:cover;
+}
+.wish-stars{
+    color:var(--gold);
+    font-size:26px;
+    letter-spacing:15px;
+    margin:20px 0;
+    animation:hintPulse 3s infinite;
+}
+.wish-text{
+    max-width:520px;
+    margin:15px auto;
+    color:var(--muted);
+    font-size:14px;
+    line-height:2.1;
+}
+.wish-message{
+    min-height:38px;
+    margin-top:15px;
+    color:#ffd6e5;
+    font:600 26px "Dancing Script",cursive;
+}
+
+/* CẢNH 6 - LÁ THƯ */
 .letter-title{
-    font-family:"Dancing Script",cursive;
-    font-size:clamp(36px,6vw,65px);
-    color:var(--blush);
-    margin-bottom:25px;
+    margin-bottom:24px;
+    color:#ffd5e5;
+    font:700 clamp(36px,6vw,65px) "Dancing Script",cursive;
 }
-.letter-envelope{
+.envelope{
     position:relative;
     display:block;
     width:min(86vw,490px);
@@ -588,15 +570,15 @@ img{display:block;max-width:100%}
     margin:0 auto;
     border:0;
     background:transparent;
-    filter:drop-shadow(0 20px 30px #0008);
     perspective:1000px;
+    filter:drop-shadow(0 20px 25px #0007);
 }
 .envelope-body{
     position:absolute;
     inset:0;
+    overflow:hidden;
     border-radius:9px;
     background:linear-gradient(135deg,#f9d3db,#dca0b6);
-    overflow:hidden;
 }
 .envelope-back{
     position:absolute;
@@ -628,14 +610,14 @@ img{display:block;max-width:100%}
 .envelope-flap{
     position:absolute;
     z-index:5;
-    left:0;
     top:0;
+    left:0;
     width:100%;
     height:65%;
     background:linear-gradient(#ffe2e8,#e7a9bf);
     clip-path:polygon(0 0,100% 0,50% 100%);
     transform-origin:top center;
-    transition:transform 1s var(--ease),z-index 0s 1s;
+    transition:transform 1s var(--ease);
 }
 .envelope-seal{
     position:absolute;
@@ -643,110 +625,155 @@ img{display:block;max-width:100%}
     top:43%;
     left:50%;
     transform:translate(-50%,-50%);
+    display:grid;
+    place-items:center;
     width:77px;
     height:77px;
     border:5px double #ffd4df;
     border-radius:50%;
-    display:grid;
-    place-items:center;
     background:radial-gradient(circle at 30% 25%,#f4a7bf,#ad426e);
     color:white;
-    font-family:"Dancing Script",cursive;
-    font-size:27px;
-    box-shadow:0 5px 15px #8d3b5e66;
-    transition:.6s;
+    font:700 27px "Dancing Script",cursive;
+    transition:opacity .6s,transform .6s;
 }
-.letter-envelope.open .envelope-flap{
+.envelope.open .envelope-flap{
     transform:rotateX(180deg);
     z-index:1;
 }
-.letter-envelope.open .envelope-seal{
+.envelope.open .envelope-seal{
     opacity:0;
     transform:translate(-50%,-50%) scale(.3);
 }
-.letter-envelope.open{
+.envelope.open{
     animation:envelopeExit 1s 1s forwards;
 }
 @keyframes envelopeExit{
     to{opacity:0;transform:translateY(70px) scale(.85)}
 }
 .letter-paper{
-    position:relative;
     display:none;
     width:min(92vw,680px);
     max-height:min(76vh,750px);
-    overflow-y:auto;
+    margin:auto;
     padding:clamp(25px,5vw,52px);
+    overflow-y:auto;
     border-radius:12px;
-    background:
-        linear-gradient(135deg,#fffdf7,#ffedf2);
+    background:linear-gradient(135deg,#fffdf7,#ffedf2);
     color:#7d455b;
-    box-shadow:0 25px 80px #000a,0 0 40px #ffb2d444;
+    box-shadow:0 25px 70px #0009;
     text-align:left;
     scrollbar-width:thin;
-    scrollbar-color:#dc94ae transparent;
 }
 .letter-paper.visible{
     display:block;
     animation:paperEnter 1s var(--ease) both;
 }
 @keyframes paperEnter{
-    from{opacity:0;transform:translateY(90px) scale(.85)}
+    from{opacity:0;transform:translateY(70px) scale(.9)}
     to{opacity:1;transform:none}
-}
-.letter-paper:before{
-    content:"";
-    position:absolute;
-    inset:12px;
-    border:1px solid #d99cb655;
-    border-radius:7px;
-    pointer-events:none;
 }
 .paper-top{
     text-align:center;
-    font-size:12px;
-    letter-spacing:4px;
     color:#c57b9b;
+    font-size:11px;
+    letter-spacing:3px;
 }
 .paper-heading{
-    font-family:"Dancing Script",cursive;
-    text-align:center;
-    font-size:clamp(38px,6vw,58px);
-    color:#bc4e7c;
     margin:12px 0 25px;
+    color:#bc4e7c;
+    text-align:center;
+    font:700 clamp(38px,6vw,58px) "Dancing Script",cursive;
 }
 .paper-body{
-    font-size:14px;
-    line-height:2.15;
     white-space:pre-line;
+    font-size:14px;
+    line-height:2.1;
 }
 .paper-signature{
     margin-top:30px;
-    text-align:right;
-    font-family:"Dancing Script",cursive;
-    font-size:28px;
     color:#b94c7d;
+    text-align:right;
+    font:700 29px "Dancing Script",cursive;
 }
 .paper-bottom{
     display:flex;
     justify-content:center;
     margin-top:28px;
 }
-.letter-close{
+.close-letter{
     position:absolute;
-    z-index:8;
+    z-index:10;
     top:70px;
-    right:22px;
-    width:39px;
-    height:39px;
+    right:20px;
+    display:none;
+    width:40px;
+    height:40px;
     border:1px solid #ffcada88;
     border-radius:50%;
     background:#ffffff15;
     color:white;
     font-size:25px;
-    display:none;
 }
-.letter-close.visible{display:block}
+.close-letter.visible{display:block}
+
+/* HIỆU ỨNG PHỤ */
+.meteor{
+    position:fixed;
+    z-index:2;
+    top:var(--top);
+    left:var(--left);
+    width:100px;
+    height:2px;
+    border-radius:100%;
+    background:linear-gradient(90deg,transparent,#ffb8d6,#fff);
+    box-shadow:0 0 12px #ffb8d6;
+    pointer-events:none;
+    animation:meteorMove 1.6s ease-out forwards;
+}
+@keyframes meteorMove{
+    0%{opacity:0;transform:translate3d(0,0,0) rotate(-32deg)}
+    15%{opacity:1}
+    100%{
+        opacity:0;
+        transform:translate3d(-220px,150px,0) rotate(-32deg);
+    }
+}
+.touch-heart{
+    position:fixed;
+    z-index:45;
+    pointer-events:none;
+    color:#ffc0da;
+    font-size:var(--size);
+    text-shadow:0 0 12px #ff76ac;
+    animation:heartRise 1.4s ease-out forwards;
+}
+@keyframes heartRise{
+    0%{opacity:0;transform:translate(-50%,-50%) scale(.4)}
+    20%{opacity:1}
+    100%{
+        opacity:0;
+        transform:translate(calc(-50% + var(--drift)),-125px) scale(1.2);
+    }
+}
+.flash{
+    position:fixed;
+    z-index:44;
+    inset:0;
+    opacity:0;
+    pointer-events:none;
+    background:radial-gradient(
+        circle at var(--x,50%) var(--y,50%),
+        #fff8f0aa,
+        #ff91bd33 20%,
+        transparent 65%
+    );
+}
+.flash.show{animation:flashLight 1s forwards}
+@keyframes flashLight{
+    0%{opacity:0}
+    25%{opacity:.8}
+    100%{opacity:0}
+}
 .final-heart{
     position:fixed;
     z-index:60;
@@ -763,7 +790,6 @@ img{display:block;max-width:100%}
 .final-heart span{
     font-size:clamp(100px,25vw,230px);
     animation:finalScale 2s var(--ease) forwards;
-    filter:drop-shadow(0 0 40px #ff6ca7);
 }
 @keyframes finalScale{
     0%{transform:scale(.2);opacity:0}
@@ -777,9 +803,8 @@ img{display:block;max-width:100%}
 .toast{
     position:fixed;
     z-index:100;
-    left:50%;
     bottom:65px;
-    transform:translate(-50%,20px);
+    left:50%;
     width:max-content;
     max-width:90vw;
     padding:12px 19px;
@@ -787,19 +812,21 @@ img{display:block;max-width:100%}
     border-radius:40px;
     background:#2a1028ee;
     color:#ffe4ef;
-    text-align:center;
     font-size:12px;
+    text-align:center;
     opacity:0;
     pointer-events:none;
-    transition:.4s;
+    transform:translate(-50%,20px);
+    transition:opacity .3s,transform .3s;
 }
-.toast.show{opacity:1;transform:translate(-50%,0)}
+.toast.show{
+    opacity:1;
+    transform:translate(-50%,0);
+}
 
-/* ============================
-   RESPONSIVE
-============================ */
+/* RESPONSIVE */
 @media(max-width:720px){
-    .scene{padding:75px 17px 62px}
+    .scene{padding:75px 17px 60px}
     .flower-layout{
         flex-direction:column-reverse;
         gap:0;
@@ -809,16 +836,13 @@ img{display:block;max-width:100%}
         width:min(75vw,330px);
         height:min(43vh,390px);
     }
-    .flower-copy{
-        width:100%;
-        max-width:450px;
-    }
+    .flower-copy{width:100%;max-width:450px}
     .flower-copy .heading{
         font-size:clamp(40px,9vw,60px);
         margin:7px 0;
     }
     .flower-copy .subtitle{margin:auto}
-    .flower-copy .scene-actions{justify-content:center}
+    .flower-copy .actions{justify-content:center}
     .flower-note{font-size:21px;margin-top:5px}
     .album-stage{height:min(43vh,350px)}
     .polaroid{
@@ -827,73 +851,76 @@ img{display:block;max-width:100%}
     }
     .album-header .heading{font-size:43px}
     .album-note{font-size:11px}
-    .letter-envelope{height:235px}
-    .letter-paper{max-height:73vh}
+    .envelope{height:235px}
+    .letter-paper{max-height:72vh}
     .paper-body{font-size:13px}
-    #scene4 .scene-actions{bottom:12%}
+    .music-btn{background:#241022f0}
+    .aurora{opacity:.75}
 }
 @media(max-width:390px){
-    .intro-gift{transform:scale(.85);margin-bottom:0}
-    .intro-heading{font-size:43px}
-    .intro-message{font-size:12px}
+    .intro-badge{margin-bottom:8px}
+    .gift{height:180px;margin-bottom:0}
+    .intro-text{font-size:12px}
     .flower-art{height:37vh}
     .album-stage{height:38vh}
-    .letter-envelope{height:205px}
+    .envelope{height:205px}
 }
 @media(max-height:680px){
     .scene{padding-top:65px;padding-bottom:45px}
-    .intro-gift{height:165px;transform:scale(.78);margin-bottom:0}
+    .gift{height:165px;margin-bottom:0}
     .intro-badge{margin-bottom:8px}
     .flower-art{height:38vh}
     .flower-note{display:none}
     .album-stage{height:36vh}
-    .letter-envelope{height:200px}
+    .envelope{height:200px}
     .letter-title{margin-bottom:12px}
 }
 @media(prefers-reduced-motion:reduce){
     *,*:before,*:after{
         animation-duration:.01ms!important;
         animation-iteration-count:1!important;
-        scroll-behavior:auto!important;
     }
 }
 </style>
 </head>
 <body>
 
-<div class="ambient"></div>
-<div class="grain"></div>
-<canvas id="sky"></canvas>
-<canvas id="effects"></canvas>
+<div class="background">
+    <div class="aurora one"></div>
+    <div class="aurora two"></div>
+</div>
+
+<canvas id="stars"></canvas>
+<canvas id="particles"></canvas>
 
 <header class="topbar">
     <div class="brand">For My <span>Love ♡</span></div>
-    <button class="music-btn" id="musicBtn" aria-label="Bật hoặc tắt nhạc">♫</button>
+    <button class="music-btn" id="musicBtn" aria-label="Bật tắt nhạc">♫</button>
 </header>
 
 <!-- CẢNH 1 -->
 <section class="scene active" id="scene1">
-    <div class="scene-content">
+    <div class="scene-inner">
         <div class="intro-badge">A LITTLE SURPRISE FOR YOU</div>
-        <button class="intro-gift" id="giftBtn" aria-label="Mở hộp quà">
+        <button class="gift" id="giftBtn" aria-label="Mở hộp quà">
             <span class="gift-box"></span>
             <span class="gift-lid"></span>
             <span class="gift-bow">🎀</span>
         </button>
         <p class="eyebrow">20 OCTOBER • WITH ALL MY LOVE</p>
-        <h1 class="heading intro-heading">Gửi Vợ Yêu Của Anh</h1>
-        <p class="intro-message">
+        <h1 class="heading">Gửi Vợ Yêu Của Anh</h1>
+        <p class="intro-text">
             Có một điều bất ngờ nhỏ anh đã chuẩn bị dành riêng cho em.
             Hãy mở nó ra và cảm nhận tình yêu của anh nhé!
         </p>
-        <p class="intro-date">20 . 10</p>
-        <p class="touch-hint">✧ Chạm vào hộp quà để bắt đầu ✧</p>
+        <p class="date">20 . 10</p>
+        <p class="hint">✧ Chạm vào hộp quà để bắt đầu ✧</p>
     </div>
 </section>
 
 <!-- CẢNH 2 -->
 <section class="scene" id="scene2">
-    <div class="scene-content flower-layout">
+    <div class="scene-inner flower-layout">
         <div class="flower-copy">
             <p class="eyebrow">A BOUQUET JUST FOR YOU</p>
             <h2 class="heading">Một Bó Hoa<br>Dành Cho Em</h2>
@@ -902,22 +929,27 @@ img{display:block;max-width:100%}
                 Mỗi cánh hoa là một lời chúc bình an.
                 Và tất cả đều dành riêng cho vợ yêu của anh.
             </p>
-            <p class="flower-note">Em xứng đáng với những điều dịu dàng nhất ♡</p>
-            <div class="scene-actions">
-                <button class="btn" data-next="3">Những kỷ niệm của chúng mình →</button>
+            <p class="flower-note">
+                Em xứng đáng với những điều dịu dàng nhất ♡
+            </p>
+            <div class="actions">
+                <button class="btn" data-next="3">
+                    Những kỷ niệm của chúng mình →
+                </button>
             </div>
         </div>
+
         <div class="flower-art">
             <div class="flower-halo"></div>
-            <svg viewBox="0 0 440 560" xmlns="http://www.w3.org/2000/svg" aria-label="Bó hoa hồng tặng vợ">
+            <svg viewBox="0 0 440 560" xmlns="http://www.w3.org/2000/svg">
                 <defs>
-                    <radialGradient id="rosePink" cx=".35" cy=".28" r=".8">
+                    <radialGradient id="rosePink">
                         <stop stop-color="#fff2ef"/>
                         <stop offset=".3" stop-color="#ffb9cd"/>
                         <stop offset=".7" stop-color="#ed7fa6"/>
                         <stop offset="1" stop-color="#b94c78"/>
                     </radialGradient>
-                    <radialGradient id="roseCream" cx=".35" cy=".25" r=".8">
+                    <radialGradient id="roseCream">
                         <stop stop-color="#fffef2"/>
                         <stop offset=".4" stop-color="#ffe9dc"/>
                         <stop offset="1" stop-color="#e3a4aa"/>
@@ -934,13 +966,12 @@ img{display:block;max-width:100%}
                     </linearGradient>
                     <g id="roseShape">
                         <path d="M0 -45 C-25 -60 -55 -30 -46 1 C-52 28 -20 52 3 45 C32 55 55 24 46 -4 C55 -30 25 -56 0 -45" fill="url(#rosePink)"/>
-                        <path d="M-30 -27 Q-8 -49 11 -28 Q-7 -7 -30 -27" fill="#ffe0e5" opacity=".8"/>
+                        <path d="M-30 -27 Q-8 -49 11 -28 Q-7 -7 -30 -27" fill="#ffe0e5"/>
                         <path d="M10 -30 Q43 -36 38 -3 Q17 -4 10 -30" fill="#f18eae"/>
                         <path d="M-39 5 Q-26 35 -3 37 Q-9 13 -39 5" fill="#e879a0"/>
                         <path d="M9 35 Q40 30 40 4 Q16 10 9 35" fill="#f7a8c2"/>
                         <path d="M-25 -6 Q-18 -27 6 -25 Q29 -20 25 5 Q22 28 -2 25 Q-23 22 -25 -6" fill="#ffbdd0"/>
-                        <path d="M-12 -9 Q-2 -24 15 -12 Q26 0 11 13 Q-7 23 -15 6 Q-18 -7 -2 -11 Q11 -12 13 0 Q13 9 2 8" fill="none" stroke="#d66c94" stroke-width="4" stroke-linecap="round"/>
-                        <path d="M-5 1 Q2 -7 7 0" fill="none" stroke="#b94e79" stroke-width="3"/>
+                        <path d="M-12 -9 Q-2 -24 15 -12 Q26 0 11 13 Q-7 23 -15 6 Q-18 -7 -2 -11 Q11 -12 13 0 Q13 9 2 8" fill="none" stroke="#d66c94" stroke-width="4"/>
                     </g>
                     <g id="creamShape">
                         <circle r="43" fill="url(#roseCream)"/>
@@ -949,15 +980,14 @@ img{display:block;max-width:100%}
                         <path d="M-34 9 Q-16 39 6 34 Q0 14 -34 9" fill="#f4c5c7"/>
                         <path d="M5 33 Q36 26 33 0 Q10 9 5 33" fill="#ffe8d7"/>
                         <path d="M-21 -5 Q-17 -25 5 -23 Q27 -18 23 5 Q17 26 -3 21 Q-22 17 -21 -5" fill="#fff0e1"/>
-                        <path d="M-10 -7 Q4 -20 14 -7 Q21 5 7 12 Q-7 16 -12 4 Q-14 -6 0 -9 Q11 -9 10 3" fill="none" stroke="#dda6ad" stroke-width="4" stroke-linecap="round"/>
+                        <path d="M-10 -7 Q4 -20 14 -7 Q21 5 7 12 Q-7 16 -12 4 Q-14 -6 0 -9 Q11 -9 10 3" fill="none" stroke="#dda6ad" stroke-width="4"/>
                     </g>
-                    <g id="foliage">
+                    <g id="leaf">
                         <path d="M0 0 Q-37 -48 -10 -69 Q20 -41 0 0" fill="#5a8063"/>
                         <path d="M0 0 L-10 -64" stroke="#a5c19b" stroke-width="2"/>
                     </g>
                 </defs>
-
-                <g stroke="#64866a" stroke-width="5" fill="none" stroke-linecap="round">
+                <g stroke="#64866a" stroke-width="5" fill="none">
                     <path d="M220 455 Q175 290 115 145"/>
                     <path d="M220 455 Q220 280 210 90"/>
                     <path d="M220 455 Q255 280 320 145"/>
@@ -967,14 +997,13 @@ img{display:block;max-width:100%}
                     <path d="M220 455 Q245 290 290 230"/>
                 </g>
                 <g>
-                    <use href="#foliage" transform="translate(140 300) rotate(-55)"/>
-                    <use href="#foliage" transform="translate(285 305) rotate(60)"/>
-                    <use href="#foliage" transform="translate(175 200) rotate(-25)"/>
-                    <use href="#foliage" transform="translate(260 210) rotate(35)"/>
-                    <use href="#foliage" transform="translate(100 345) rotate(-70)"/>
-                    <use href="#foliage" transform="translate(335 350) rotate(70)"/>
+                    <use href="#leaf" transform="translate(140 300) rotate(-55)"/>
+                    <use href="#leaf" transform="translate(285 305) rotate(60)"/>
+                    <use href="#leaf" transform="translate(175 200) rotate(-25)"/>
+                    <use href="#leaf" transform="translate(260 210) rotate(35)"/>
+                    <use href="#leaf" transform="translate(100 345) rotate(-70)"/>
+                    <use href="#leaf" transform="translate(335 350) rotate(70)"/>
                 </g>
-
                 <g class="rose-head"><use href="#creamShape" transform="translate(215 105) scale(1.12)"/></g>
                 <g class="rose-head"><use href="#roseShape" transform="translate(137 142) scale(1.04)"/></g>
                 <g class="rose-head"><use href="#creamShape" transform="translate(293 142) scale(1.05)"/></g>
@@ -984,14 +1013,11 @@ img{display:block;max-width:100%}
                 <g class="rose-head"><use href="#creamShape" transform="translate(143 250) scale(.97)"/></g>
                 <g class="rose-head"><use href="#roseShape" transform="translate(288 250) scale(.97)"/></g>
                 <g class="rose-head"><use href="#roseShape" transform="translate(215 296) scale(1.02)"/></g>
-
                 <path d="M45 295 Q110 342 220 360 Q320 325 394 295 L323 454 L220 540 L113 454Z" fill="url(#paperWrap)"/>
                 <path d="M45 295 L220 360 L113 454Z" fill="#fff4ed" opacity=".9"/>
                 <path d="M394 295 L220 360 L323 454Z" fill="#dba2b7" opacity=".9"/>
                 <path d="M113 454 L220 540 L220 360Z" fill="#ffe8e8" opacity=".85"/>
                 <path d="M323 454 L220 540 L220 360Z" fill="#efbdc8" opacity=".8"/>
-                <path d="M45 295 Q110 340 220 360 Q330 340 394 295" fill="none" stroke="#fff5ee" stroke-width="5"/>
-
                 <path d="M220 410 C160 350 130 405 190 425 L220 416 C280 360 315 408 245 428Z" fill="url(#ribbon)" stroke="#ffe7e9" stroke-width="3"/>
                 <path d="M211 417 Q155 452 178 510 L220 456 L256 514 Q278 452 229 417Z" fill="#e995b0" stroke="#ffe0e9" stroke-width="3"/>
                 <ellipse cx="220" cy="419" rx="21" ry="17" fill="#b94e79" stroke="#ffe7ee" stroke-width="4"/>
@@ -1006,21 +1032,27 @@ img{display:block;max-width:100%}
 
 <!-- CẢNH 3 -->
 <section class="scene" id="scene3">
-    <div class="scene-content">
+    <div class="scene-inner">
         <div class="album-header">
             <p class="eyebrow">OUR LITTLE MEMORIES</p>
             <h2 class="heading">Những Điều Anh Trân Trọng</h2>
-            <p class="subtitle">Mỗi khoảnh khắc bên em đều là một điều đáng nhớ.</p>
+            <p class="subtitle">
+                Mỗi khoảnh khắc bên em đều là một điều đáng nhớ.
+            </p>
         </div>
         <div class="album-stage" id="albumStage"></div>
-        <p class="album-note">Chạm vào từng bức ảnh để xem kỷ niệm của chúng mình ♡</p>
+        <p class="album-note">
+            Chạm vào từng bức ảnh để xem kỷ niệm của chúng mình ♡
+        </p>
         <div class="album-controls">
-            <button class="album-arrow" id="prevPhoto" aria-label="Ảnh trước">‹</button>
+            <button class="album-arrow" id="prevPhoto">‹</button>
             <span class="album-count" id="albumCount">01 / 05</span>
-            <button class="album-arrow" id="nextPhoto" aria-label="Ảnh sau">›</button>
+            <button class="album-arrow" id="nextPhoto">›</button>
         </div>
-        <div class="scene-actions">
-            <button class="btn" data-next="4">Một điều anh muốn nói →</button>
+        <div class="actions">
+            <button class="btn" data-next="4">
+                Một điều anh muốn nói →
+            </button>
         </div>
     </div>
 </section>
@@ -1036,19 +1068,49 @@ img{display:block;max-width:100%}
             thì đó là: em rất đặc biệt trong lòng anh.
         </p>
     </div>
-    <div class="scene-actions">
-        <button class="btn" data-next="5">💌 Có một lá thư dành cho em</button>
+    <div class="actions">
+        <button class="btn" data-next="5">
+            ✨ Điều ước dành cho em
+        </button>
     </div>
 </section>
 
 <!-- CẢNH 5 -->
 <section class="scene" id="scene5">
-    <button class="letter-close" id="closeLetter" aria-label="Đóng thư">×</button>
-    <div class="scene-content">
+    <div class="scene-inner">
+        <p class="eyebrow">A WISH FOR MY LOVE</p>
+        <h2 class="heading">Điều Ước Của Anh</h2>
+        <div class="wish-photo">
+            <img id="wishPhoto" alt="Vợ yêu của anh">
+        </div>
+        <div class="wish-stars">✦ ✧ ✦</div>
+        <p class="wish-text">
+            Nếu được gửi một điều ước đến những vì sao,
+            anh chỉ mong em luôn được bình an, vui vẻ
+            và hạnh phúc mỗi ngày.
+        </p>
+        <p class="wish-message" id="wishMessage">
+            Em chính là điều ước đẹp nhất của anh ♡
+        </p>
+        <div class="actions">
+            <button class="btn" id="wishBtn">
+                🌟 Gửi một điều ước
+            </button>
+            <button class="btn" data-next="6">
+                💌 Đọc lá thư của anh →
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- CẢNH 6 -->
+<section class="scene" id="scene6">
+    <button class="close-letter" id="closeLetter">×</button>
+    <div class="scene-inner">
         <div id="envelopeView">
             <p class="eyebrow">A LETTER FROM MY HEART</p>
             <h2 class="letter-title">Lá Thư Dành Riêng Cho Vợ</h2>
-            <button class="letter-envelope" id="envelopeBtn" aria-label="Mở phong thư">
+            <button class="envelope" id="envelopeBtn">
                 <span class="envelope-body">
                     <span class="envelope-back"></span>
                     <span class="envelope-left"></span>
@@ -1058,7 +1120,7 @@ img{display:block;max-width:100%}
                 <span class="envelope-flap"></span>
                 <span class="envelope-seal">Love</span>
             </button>
-            <p class="touch-hint">✧ Chạm vào phong thư để đọc nhé ✧</p>
+            <p class="hint">✧ Chạm vào phong thư để đọc nhé ✧</p>
         </div>
         <article class="letter-paper" id="letterPaper" tabindex="-1">
             <p class="paper-top">20 OCTOBER • WITH LOVE</p>
@@ -1072,19 +1134,19 @@ img{display:block;max-width:100%}
     </div>
 </section>
 
-<nav class="progress" id="progress" aria-label="Tiến trình món quà"></nav>
+<nav class="progress" id="progress"></nav>
+<div class="flash" id="flash"></div>
 <div class="final-heart" id="finalHeart"><span>❤️</span></div>
-<div class="toast" id="toast" role="status"></div>
+<div class="toast" id="toast"></div>
 <audio id="backgroundMusic" loop preload="none"></audio>
 
 <script>
 "use strict";
 
-/* ===================================================
-   PHẦN 1: CẤU HÌNH MÓN QUÀ
-   Chỉ người tạo website cần chỉnh ở đây.
-   Người nhận không thấy bất kỳ bảng cài đặt nào.
-=================================================== */
+/* =========================================
+   CẤU HÌNH MÓN QUÀ
+   ẢNH VÀ NHẠC CỦA ÔNG
+========================================= */
 const CONFIG={
     wifeName:"Vợ yêu",
     husbandName:"Chồng yêu của em",
@@ -1145,60 +1207,58 @@ Chúc mừng ngày 20/10, công chúa nhỏ của anh! 🌹
 Anh yêu em rất nhiều. ❤️`
 };
 
-/* ===================================================
-   PHẦN 2: CÁC BIẾN CHUNG
-=================================================== */
+/* =========================================
+   TIỆN ÍCH VÀ TRẠNG THÁI
+========================================= */
 const $=selector=>document.querySelector(selector);
 const $$=selector=>Array.from(document.querySelectorAll(selector));
 const random=(min,max)=>Math.random()*(max-min)+min;
-const clamp=(value,min,max)=>Math.min(max,Math.max(min,value));
+const clamp=(v,min,max)=>Math.min(max,Math.max(min,v));
 
 const state={
     scene:1,
     transitioning:false,
-    musicPlaying:false,
-    musicAvailable:true,
-    albumIndex:0,
-    letterOpened:false,
     giftOpened:false,
+    letterOpened:false,
+    albumIndex:0,
     stars:[],
     particles:[],
-    petals:[],
-    lastTime:0,
-    reducedMotion:matchMedia("(prefers-reduced-motion: reduce)").matches
+    petals:new Set(),
+    lastFrame:0,
+    lastDraw:0,
+    reducedMotion:matchMedia("(prefers-reduced-motion:reduce)").matches
 };
 
-const sky=$("#sky");
-const effects=$("#effects");
-const skyCtx=sky.getContext("2d");
-const fxCtx=effects.getContext("2d");
+const sky=$("#stars");
+const effects=$("#particles");
+const skyCtx=sky.getContext("2d",{alpha:true});
+const fxCtx=effects.getContext("2d",{alpha:true});
 const audio=$("#backgroundMusic");
 
 let width=innerWidth;
 let height=innerHeight;
-let pixelRatio=1;
-let toastTimeout;
-let letterTimeout;
-let giftTimeout;
+let dpr=1;
+let toastTimer;
+let sceneTimer;
+let letterTimer;
+let resizeTimer;
+let frameId=0;
 
-/* ===================================================
-   PHẦN 3: THÔNG BÁO
-=================================================== */
+/* =========================================
+   THÔNG BÁO
+========================================= */
 function toast(message){
-    const element=$("#toast");
-    element.textContent=message;
-    element.classList.add("show");
-    clearTimeout(toastTimeout);
-    toastTimeout=setTimeout(()=>{
-        element.classList.remove("show");
-    },3000);
+    const el=$("#toast");
+    el.textContent=message;
+    el.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer=setTimeout(()=>el.classList.remove("show"),3000);
 }
 
-/* ===================================================
-   PHẦN 4: TẠO ẢNH DỰ PHÒNG
-   Khi chưa thêm ảnh, hiển thị nền trái tim đẹp.
-=================================================== */
-function createPlaceholder(index){
+/* =========================================
+   TẠO ẢNH DỰ PHÒNG
+========================================= */
+function placeholder(index){
     const colors=[
         ["#f9a7c7","#a04475"],
         ["#f4c1d5","#8c4775"],
@@ -1207,80 +1267,105 @@ function createPlaceholder(index){
         ["#ffcadb","#a8587b"]
     ];
     const pair=colors[index%colors.length];
-    const svg=`
-    <svg xmlns="http://www.w3.org/2000/svg" width="400" height="520">
-        <defs>
-            <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-                <stop stop-color="${pair[0]}"/>
-                <stop offset="1" stop-color="${pair[1]}"/>
-            </linearGradient>
-        </defs>
+    const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="400" height="520">
+        <defs><linearGradient id="bg" x2="1" y2="1">
+            <stop stop-color="${pair[0]}"/>
+            <stop offset="1" stop-color="${pair[1]}"/>
+        </linearGradient></defs>
         <rect width="400" height="520" fill="url(#bg)"/>
         <circle cx="200" cy="230" r="125" fill="#ffffff22"/>
         <path d="M200 300 C110 240 85 180 120 145 C155 110 190 135 200 160 C215 125 255 110 285 145 C330 195 280 255 200 300Z" fill="#fff1f5"/>
-        <text x="200" y="380" text-anchor="middle" fill="white" font-family="serif" font-size="28">Forever Love</text>
-        <text x="200" y="420" text-anchor="middle" fill="#fff2f7" font-family="serif" font-size="19">20 / 10</text>
+        <text x="200" y="390" text-anchor="middle" fill="white" font-size="30">Forever Love</text>
     </svg>`;
     return "data:image/svg+xml;charset=UTF-8,"+encodeURIComponent(svg);
 }
 function assignPhoto(img,index){
+    img.decoding="async";
     img.onerror=()=>{
         img.onerror=null;
-        img.src=createPlaceholder(index);
+        img.src=placeholder(index);
     };
-    img.src=CONFIG.photos[index]||createPlaceholder(index);
+    img.src=CONFIG.photos[index]||placeholder(index);
 }
 
-/* ===================================================
-   PHẦN 5: NỀN SAO VÀ CANVAS
-=================================================== */
+/* =========================================
+   CANVAS TỐI ƯU
+   Dùng sprite thay cho shadowBlur mỗi sao
+========================================= */
+function createSprite(color){
+    const c=document.createElement("canvas");
+    c.width=48;
+    c.height=48;
+    const ctx=c.getContext("2d");
+    const g=ctx.createRadialGradient(24,24,0,24,24,24);
+    g.addColorStop(0,"#ffffff");
+    g.addColorStop(.1,color);
+    g.addColorStop(.32,color+"88");
+    g.addColorStop(1,"transparent");
+    ctx.fillStyle=g;
+    ctx.fillRect(0,0,48,48);
+    return c;
+}
+
+const pinkSprite=createSprite("#ffb4d5");
+const goldSprite=createSprite("#ffe0ac");
+
 function resizeCanvas(){
     width=innerWidth;
     height=innerHeight;
-    pixelRatio=Math.min(devicePixelRatio||1,2);
 
-    [sky,effects].forEach(canvas=>{
-        canvas.width=Math.round(width*pixelRatio);
-        canvas.height=Math.round(height*pixelRatio);
+    const mobile=width<=768;
+    dpr=mobile?Math.min(devicePixelRatio||1,1.25):Math.min(devicePixelRatio||1,2);
+
+    for(const canvas of [sky,effects]){
+        canvas.width=Math.round(width*dpr);
+        canvas.height=Math.round(height*dpr);
         canvas.style.width=width+"px";
         canvas.style.height=height+"px";
-    });
+    }
 
-    skyCtx.setTransform(pixelRatio,0,0,pixelRatio,0,0);
-    fxCtx.setTransform(pixelRatio,0,0,pixelRatio,0,0);
+    skyCtx.setTransform(dpr,0,0,dpr,0,0);
+    fxCtx.setTransform(dpr,0,0,dpr,0,0);
 
-    const count=state.reducedMotion?65:Math.min(180,Math.floor(width*height/5500));
+    const count=state.reducedMotion?50:Math.min(180,Math.floor(width*height/5500));
+
     state.stars=Array.from({length:count},()=>({
         x:random(0,width),
         y:random(0,height),
         r:random(.4,1.8),
-        alpha:random(.2,.8),
+        alpha:random(.2,.85),
         phase:random(0,Math.PI*2),
         speed:random(.0005,.002),
         gold:Math.random()>.65
     }));
-}
-function drawStars(time){
-    skyCtx.clearRect(0,0,width,height);
-    for(const star of state.stars){
-        const alpha=star.alpha*(.75+.25*Math.sin(time*star.speed+star.phase));
-        skyCtx.globalAlpha=alpha;
-        skyCtx.fillStyle=star.gold?"#ffe0ac":"#ffe7f2";
-        skyCtx.shadowColor=star.gold?"#ffe0ac":"#ff9cc6";
-        skyCtx.shadowBlur=star.r*7;
-        skyCtx.beginPath();
-        skyCtx.arc(star.x,star.y,star.r,0,Math.PI*2);
-        skyCtx.fill();
-    }
-    skyCtx.globalAlpha=1;
-    skyCtx.shadowBlur=0;
+
+    drawStars(performance.now());
 }
 
-/* ===================================================
-   PHẦN 6: HIỆU ỨNG HẠT TRÁI TIM
-=================================================== */
+function drawStars(time){
+    skyCtx.clearRect(0,0,width,height);
+
+    for(const star of state.stars){
+        const alpha=star.alpha*(.75+.25*Math.sin(time*star.speed+star.phase));
+        const size=star.r*9;
+
+        skyCtx.globalAlpha=alpha;
+        skyCtx.drawImage(
+            star.gold?goldSprite:pinkSprite,
+            star.x-size,
+            star.y-size,
+            size*2,
+            size*2
+        );
+    }
+    skyCtx.globalAlpha=1;
+}
+
+/* =========================================
+   HẠT SÁNG VÀ TRÁI TIM
+========================================= */
 function burst(x,y,amount=50){
-    if(state.reducedMotion)amount=Math.min(amount,12);
+    if(state.reducedMotion)amount=Math.min(amount,10);
 
     const colors=["#ff83b7","#ffd3e4","#f6caa5","#ffffff","#e967a0"];
 
@@ -1299,12 +1384,14 @@ function burst(x,y,amount=50){
         });
     }
 }
+
 function drawParticles(delta){
     fxCtx.clearRect(0,0,width,height);
     const factor=Math.min(delta/16.67,2);
 
     for(let i=state.particles.length-1;i>=0;i--){
         const p=state.particles[i];
+
         p.x+=p.vx*factor;
         p.y+=p.vy*factor;
         p.vy+=p.gravity*factor;
@@ -1317,371 +1404,505 @@ function drawParticles(delta){
 
         fxCtx.globalAlpha=p.alpha;
         fxCtx.fillStyle=p.color;
-        fxCtx.shadowColor=p.color;
-        fxCtx.shadowBlur=12;
         fxCtx.beginPath();
         fxCtx.arc(p.x,p.y,p.size,0,Math.PI*2);
         fxCtx.fill();
     }
     fxCtx.globalAlpha=1;
-    fxCtx.shadowBlur=0;
-}
-function animationLoop(time){
-    const delta=state.lastTime?Math.min(time-state.lastTime,40):16.67;
-    state.lastTime=time;
-    drawStars(time);
-    drawParticles(delta);
-    requestAnimationFrame(animationLoop);
 }
 
-/* ===================================================
-   PHẦN 7: CÁNH HOA BAY
-=================================================== */
+/* =========================================
+   VÒNG LẶP CHUNG
+   Không vẽ khi trang bị ẩn
+========================================= */
+function animationLoop(time){
+    frameId=requestAnimationFrame(animationLoop);
+
+    if(document.hidden){
+        state.lastFrame=0;
+        return;
+    }
+
+    const mobile=width<=768;
+    const interval=mobile?1000/45:1000/60;
+
+    if(time-state.lastDraw<interval)return;
+
+    const delta=state.lastFrame
+        ?Math.min(time-state.lastFrame,40)
+        :16.67;
+
+    state.lastFrame=time;
+    state.lastDraw=time;
+
+    drawStars(time);
+
+    if(state.particles.length){
+        drawParticles(delta);
+    }
+}
+
+/* =========================================
+   CÁNH HOA RƠI
+========================================= */
 function createPetal(){
-    if(state.reducedMotion||document.hidden)return;
-    if(state.petals.length>=18)return;
+    if(document.hidden||state.reducedMotion)return;
+    if(state.petals.size>=18)return;
 
     const petal=document.createElement("span");
-    petal.className="float-petal";
+    petal.className="floating-petal";
     petal.textContent=Math.random()>.5?"❀":"♡";
     petal.style.left=random(0,100)+"vw";
     petal.style.fontSize=random(12,25)+"px";
     petal.style.setProperty("--drift",random(-120,120)+"px");
+    petal.style.animationDuration=random(8,15)+"s";
 
-    const duration=random(8,15);
-    petal.style.animationDuration=duration+"s";
     document.body.appendChild(petal);
-    state.petals.push(petal);
+    state.petals.add(petal);
 
-    setTimeout(()=>{
+    petal.addEventListener("animationend",()=>{
         petal.remove();
-        const index=state.petals.indexOf(petal);
-        if(index!==-1)state.petals.splice(index,1);
-    },duration*1000+200);
+        state.petals.delete(petal);
+    },{once:true});
 }
 
-/* ===================================================
-   PHẦN 8: NHẠC NỀN
-=================================================== */
+/* =========================================
+   SAO BĂNG
+========================================= */
+function createMeteor(){
+    if(document.hidden||state.reducedMotion)return;
+
+    const meteor=document.createElement("span");
+    meteor.className="meteor";
+    meteor.style.setProperty("--top",random(5,42)+"%");
+    meteor.style.setProperty("--left",random(55,95)+"%");
+
+    document.body.appendChild(meteor);
+    meteor.addEventListener("animationend",()=>meteor.remove(),{once:true});
+}
+
+/* =========================================
+   TRÁI TIM KHI CHẠM
+========================================= */
+let lastTouch=0;
+
+function touchHeart(x,y){
+    if(state.reducedMotion)return;
+
+    const now=performance.now();
+    if(now-lastTouch<150)return;
+    lastTouch=now;
+
+    const heart=document.createElement("span");
+    heart.className="touch-heart";
+    heart.textContent=Math.random()>.5?"♡":"♥";
+    heart.style.left=x+"px";
+    heart.style.top=y+"px";
+    heart.style.setProperty("--size",random(14,27)+"px");
+    heart.style.setProperty("--drift",random(-55,55)+"px");
+
+    document.body.appendChild(heart);
+    heart.addEventListener("animationend",()=>heart.remove(),{once:true});
+}
+
+document.addEventListener("pointerdown",event=>{
+    if(event.pointerType==="mouse"&&event.button!==0)return;
+    touchHeart(event.clientX,event.clientY);
+},{passive:true});
+
+/* =========================================
+   ÁNH SÁNG LAN TỎA
+========================================= */
+function flashAt(x,y){
+    const flash=$("#flash");
+    flash.style.setProperty("--x",x+"px");
+    flash.style.setProperty("--y",y+"px");
+    flash.classList.remove("show");
+    void flash.offsetWidth;
+    flash.classList.add("show");
+}
+
+/* =========================================
+   NHẠC NỀN
+========================================= */
+audio.src=CONFIG.music;
+audio.volume=.65;
+
 async function playMusic(){
-    if(!state.musicAvailable)return;
     try{
         await audio.play();
-        state.musicPlaying=true;
-        updateMusicButton();
+        $("#musicBtn").classList.add("playing");
     }catch(error){
-        state.musicPlaying=false;
-        updateMusicButton();
-    }
-}
-function pauseMusic(){
-    audio.pause();
-    state.musicPlaying=false;
-    updateMusicButton();
-}
-function updateMusicButton(){
-    const button=$("#musicBtn");
-    button.textContent=state.musicPlaying?"♫":"♪";
-    button.classList.toggle("playing",state.musicPlaying);
-    button.setAttribute("aria-label",state.musicPlaying?"Tắt nhạc":"Bật nhạc");
-    button.setAttribute("aria-pressed",String(state.musicPlaying));
-}
-function toggleMusic(){
-    if(state.musicPlaying){
-        pauseMusic();
-    }else{
-        playMusic().then(()=>{
-            if(!state.musicPlaying){
-                toast("Không phát được nhạc. Hãy kiểm tra file music.mp3 nhé.");
-            }
-        });
+        $("#musicBtn").classList.remove("playing");
     }
 }
 
-/* ===================================================
-   PHẦN 9: CHUYỂN CẢNH
-=================================================== */
+function toggleMusic(){
+    if(audio.paused){
+        playMusic();
+    }else{
+        audio.pause();
+        $("#musicBtn").classList.remove("playing");
+    }
+}
+
+$("#musicBtn").addEventListener("click",toggleMusic);
+
+/* =========================================
+   CHUYỂN CẢNH
+========================================= */
 function buildProgress(){
-    const container=$("#progress");
-    for(let i=1;i<=5;i++){
-        const dot=document.createElement("button");
-        dot.type="button";
-        dot.setAttribute("aria-label","Cảnh "+i);
-        dot.dataset.scene=i;
-        dot.disabled=true;
-        container.appendChild(dot);
+    const nav=$("#progress");
+    nav.innerHTML="";
+
+    for(let i=1;i<=6;i++){
+        const button=document.createElement("button");
+        button.type="button";
+        button.setAttribute("aria-label","Cảnh "+i);
+        button.addEventListener("click",()=>{
+            if(!state.giftOpened&&i!==1)return;
+            goToScene(i);
+        });
+        nav.appendChild(button);
     }
     updateProgress();
 }
+
 function updateProgress(){
-    $$("#progress button").forEach((dot,index)=>{
-        dot.classList.toggle("active",index+1===state.scene);
-        dot.disabled=true;
+    $$("#progress button").forEach((button,index)=>{
+        button.classList.toggle("active",index+1===state.scene);
     });
 }
+
 function goToScene(number){
-    if(state.transitioning||number<1||number>5)return;
-    if(state.scene===number)return;
+    if(number<1||number>6||state.transitioning)return;
+    if(number===state.scene)return;
 
     state.transitioning=true;
-    const previous=$("#scene"+state.scene);
-    const next=$("#scene"+number);
 
-    previous.classList.remove("active");
-    next.classList.add("active");
+    const oldScene=$("#scene"+state.scene);
+    const newScene=$("#scene"+number);
 
-    state.scene=number;
-    updateProgress();
+    oldScene.classList.remove("active");
 
-    if(number===3)renderAlbum();
-    if(number===4)createLoveCloud();
-    if(number===5)resetEnvelope();
+    clearTimeout(sceneTimer);
 
-    burst(width/2,height/2,45);
+    sceneTimer=setTimeout(()=>{
+        state.scene=number;
+        newScene.classList.add("active");
+        updateProgress();
 
-    setTimeout(()=>{
-        state.transitioning=false;
-    },900);
+        if(number===3)updateAlbum();
+        if(number===4)buildLoveCloud();
+        if(number===5)updateWishPhoto();
+
+        setTimeout(()=>{
+            state.transitioning=false;
+        },850);
+    },350);
 }
 
-/* ===================================================
-   PHẦN 10: MỞ HỘP QUÀ
-=================================================== */
-function openGift(){
-    if(state.giftOpened)return;
-    state.giftOpened=true;
+$$("[data-next]").forEach(button=>{
+    button.addEventListener("click",()=>{
+        const next=Number(button.dataset.next);
+        goToScene(next);
+    });
+});
 
+/* =========================================
+   MỞ HỘP QUÀ
+========================================= */
+$("#giftBtn").addEventListener("click",()=>{
+    if(state.giftOpened)return;
+
+    state.giftOpened=true;
     $("#giftBtn").classList.add("open");
-    $("#giftBtn").disabled=true;
 
     playMusic();
-    burst(width/2,height*.45,100);
 
-    clearTimeout(giftTimeout);
-    giftTimeout=setTimeout(()=>{
-        goToScene(2);
-    },1250);
-}
+    const rect=$("#giftBtn").getBoundingClientRect();
+    const x=rect.left+rect.width/2;
+    const y=rect.top+rect.height/2;
 
-/* ===================================================
-   PHẦN 11: ALBUM KỶ NIỆM
-=================================================== */
+    flashAt(x,y);
+    burst(x,y,85);
+
+    setTimeout(()=>goToScene(2),1250);
+});
+
+/* =========================================
+   ALBUM ẢNH KỶ NIỆM
+========================================= */
 function buildAlbum(){
     const stage=$("#albumStage");
     stage.innerHTML="";
 
-    CONFIG.photos.forEach((src,index)=>{
+    CONFIG.photos.forEach((url,index)=>{
         const card=document.createElement("button");
-        card.className="polaroid";
         card.type="button";
-        card.setAttribute("aria-label","Xem ảnh kỷ niệm "+(index+1));
-        card.dataset.index=index;
+        card.className="polaroid";
+        card.setAttribute("aria-label","Xem ảnh "+(index+1));
 
         const img=document.createElement("img");
-        img.alt="Kỷ niệm của chúng mình "+(index+1);
-        img.loading="lazy";
+        img.alt="Kỷ niệm "+(index+1);
+        img.loading=index===0?"eager":"lazy";
         assignPhoto(img,index);
 
         const caption=document.createElement("span");
         caption.className="photo-caption";
-        caption.textContent=CONFIG.photoCaptions[index]||"Love ♡";
+        caption.textContent=CONFIG.photoCaptions[index]||"Forever Love ♡";
 
         card.append(img,caption);
+
         card.addEventListener("click",()=>{
             state.albumIndex=index;
-            renderAlbum();
-            burst(width/2,height*.5,18);
+            updateAlbum();
+
+            const rect=card.getBoundingClientRect();
+            burst(
+                rect.left+rect.width/2,
+                rect.top+rect.height/2,
+                18
+            );
         });
+
         stage.appendChild(card);
     });
 
-    renderAlbum();
+    updateAlbum();
 }
-function renderAlbum(){
+
+function updateAlbum(){
     const cards=$$(".polaroid");
-    const mobile=width<720;
-    const step=mobile?65:135;
+    const total=cards.length;
+    if(!total)return;
+
+    const mobile=innerWidth<=720;
+    const spacing=mobile?52:110;
 
     cards.forEach((card,index)=>{
         let distance=index-state.albumIndex;
-        if(distance>2)distance-=5;
-        if(distance< -2)distance+=5;
 
-        const rotation=distance*7;
-        const offset=distance*step;
-        const scale=distance===0?1:distance===1||distance===-1?.85:.7;
+        if(distance>total/2)distance-=total;
+        if(distance<-total/2)distance+=total;
 
-        card.style.setProperty("--offset",offset+"px");
-        card.style.setProperty("--rotation",rotation+"deg");
-        card.style.setProperty("--scale",scale);
-        card.style.setProperty("--z",5-Math.abs(distance));
-        card.classList.toggle("selected",distance===0);
-        card.setAttribute("aria-pressed",String(distance===0));
+        const abs=Math.abs(distance);
+
+        card.style.setProperty("--offset",distance*spacing+"px");
+        card.style.setProperty("--rotation",distance*8+"deg");
+        card.style.setProperty("--scale",abs===0?1:Math.max(.68,1-abs*.13));
+        card.style.setProperty("--z",10-abs);
+        card.style.opacity=abs>2?".55":"1";
+        card.classList.toggle("selected",index===state.albumIndex);
     });
 
     $("#albumCount").textContent=
         String(state.albumIndex+1).padStart(2,"0")+
         " / "+
-        String(CONFIG.photos.length).padStart(2,"0");
-}
-function changePhoto(direction){
-    state.albumIndex=
-        (state.albumIndex+direction+CONFIG.photos.length)%CONFIG.photos.length;
-    renderAlbum();
+        String(total).padStart(2,"0");
 }
 
-/* ===================================================
-   PHẦN 12: BẦU TRỜI LỜI YÊU
-=================================================== */
-function createLoveCloud(){
+function moveAlbum(direction){
+    const total=CONFIG.photos.length;
+    state.albumIndex=(state.albumIndex+direction+total)%total;
+    updateAlbum();
+}
+
+$("#prevPhoto").addEventListener("click",()=>moveAlbum(-1));
+$("#nextPhoto").addEventListener("click",()=>moveAlbum(1));
+
+/* Vuốt ảnh trên điện thoại */
+let touchStartX=0;
+const albumStage=$("#albumStage");
+
+albumStage.addEventListener("touchstart",event=>{
+    touchStartX=event.changedTouches[0].screenX;
+},{passive:true});
+
+albumStage.addEventListener("touchend",event=>{
+    const difference=event.changedTouches[0].screenX-touchStartX;
+    if(Math.abs(difference)>40){
+        moveAlbum(difference<0?1:-1);
+    }
+},{passive:true});
+
+/* =========================================
+   BẦU TRỜI LỜI YÊU
+========================================= */
+let loveBuilt=false;
+
+function buildLoveCloud(){
+    if(loveBuilt)return;
+    loveBuilt=true;
+
     const cloud=$("#loveCloud");
-    cloud.innerHTML="";
+    const phrases=[
+        ...CONFIG.wishes,
+        "♡","♥","✦","♡","♥","✧","♡","♥"
+    ];
 
-    const mobile=width<720;
-    const total=mobile?32:56;
-
-    for(let i=0;i<total;i++){
+    phrases.forEach((phrase,index)=>{
         const item=document.createElement("span");
-        const heart=i%3===0;
-        item.className="love-item"+(heart?" heart":"");
+        item.className="love-item";
+        item.textContent=phrase;
 
-        let x=random(2,95);
-        let y=random(8,90);
+        const isHeart=["♡","♥","✦","✧"].includes(phrase);
+        const angle=index/phrases.length*Math.PI*2;
+        const radiusX=random(25,47);
+        const radiusY=random(23,43);
 
-        // Chừa khoảng trống trung tâm để lời chúc chính dễ đọc.
-        if(x>23&&x<77&&y>29&&y<70){
-            x=x<50?random(2,22):random(78,96);
-        }
+        let x=50+Math.cos(angle)*radiusX;
+        let y=50+Math.sin(angle)*radiusY;
+
+        x=clamp(x,3,90);
+        y=clamp(y,9,87);
 
         item.style.setProperty("--x",x+"%");
         item.style.setProperty("--y",y+"%");
-        item.style.setProperty("--size",
-            heart?random(15,31)+"px":random(mobile?10:12,mobile?15:22)+"px"
-        );
+        item.style.setProperty("--size",isHeart?random(22,40)+"px":random(10,15)+"px");
         item.style.setProperty("--opacity",random(.35,.85));
-        item.style.setProperty("--duration",random(5,13)+"s");
-        item.style.setProperty("--delay",random(-10,0)+"s");
-
-        item.textContent=heart
-            ?["♥","♡","✦","❥"][i%4]
-            :CONFIG.wishes[i%CONFIG.wishes.length];
+        item.style.setProperty("--duration",random(4,9)+"s");
+        item.style.setProperty("--delay",-random(0,8)+"s");
 
         cloud.appendChild(item);
+    });
+}
+
+/* =========================================
+   BẦU TRỜI ĐIỀU ƯỚC
+========================================= */
+function updateWishPhoto(){
+    const img=$("#wishPhoto");
+    if(!img.getAttribute("src")){
+        assignPhoto(img,0);
     }
 }
 
-/* ===================================================
-   PHẦN 13: PHONG THƯ VÀ LÁ THƯ
-=================================================== */
-function resetEnvelope(){
-    clearTimeout(letterTimeout);
-    state.letterOpened=false;
-    $("#envelopeBtn").classList.remove("open");
-    $("#envelopeBtn").disabled=false;
-    $("#envelopeView").style.display="block";
-    $("#letterPaper").classList.remove("visible");
-    $("#closeLetter").classList.remove("visible");
-}
-function openEnvelope(){
+const wishMessages=[
+    "Mong vợ luôn vui vẻ và bình an ♡",
+    "Mong mọi điều tốt đẹp sẽ đến với em 🌹",
+    "Mong chúng mình luôn bên nhau ❤️",
+    "Mong nụ cười luôn ở trên môi em ✨",
+    "Anh sẽ luôn trân trọng em ♡"
+];
+
+let wishIndex=0;
+
+$("#wishBtn").addEventListener("click",()=>{
+    const message=$("#wishMessage");
+    message.textContent=wishMessages[wishIndex%wishMessages.length];
+    wishIndex++;
+
+    burst(innerWidth/2,innerHeight/2,100);
+    flashAt(innerWidth/2,innerHeight/2);
+});
+
+/* =========================================
+   LÁ THƯ
+========================================= */
+$("#letterBody").textContent=CONFIG.letter;
+$("#letterSignature").textContent=CONFIG.husbandName+" ♡";
+
+function openLetter(){
     if(state.letterOpened)return;
     state.letterOpened=true;
 
-    $("#envelopeBtn").classList.add("open");
-    $("#envelopeBtn").disabled=true;
-    burst(width/2,height*.5,75);
+    const envelope=$("#envelopeBtn");
+    envelope.classList.add("open");
 
-    letterTimeout=setTimeout(()=>{
+    const rect=envelope.getBoundingClientRect();
+    const x=rect.left+rect.width/2;
+    const y=rect.top+rect.height/2;
+
+    burst(x,y,75);
+    flashAt(x,y);
+
+    clearTimeout(letterTimer);
+
+    letterTimer=setTimeout(()=>{
         $("#envelopeView").style.display="none";
         $("#letterPaper").classList.add("visible");
-        $("#letterPaper").scrollTop=0;
         $("#closeLetter").classList.add("visible");
-        $("#letterPaper").focus();
-    },1350);
-}
-function closeEnvelope(){
-    if(state.transitioning)return;
-    resetEnvelope();
-    goToScene(4);
+    },1600);
 }
 
-/* ===================================================
-   PHẦN 14: KẾT THÚC MÓN QUÀ
-=================================================== */
-function finishGift(){
-    const heart=$("#finalHeart");
-    heart.classList.remove("show");
-    void heart.offsetWidth;
-    heart.classList.add("show");
+function closeLetter(){
+    clearTimeout(letterTimer);
 
-    burst(width/2,height/2,150);
-    toast("Chúc vợ yêu có một ngày 20/10 thật hạnh phúc ❤️");
+    state.letterOpened=false;
 
-    setTimeout(()=>{
-        heart.classList.remove("show");
-    },3100);
+    $("#letterPaper").classList.remove("visible");
+    $("#closeLetter").classList.remove("visible");
+    $("#envelopeView").style.display="block";
+    $("#envelopeBtn").classList.remove("open");
 }
 
-/* ===================================================
-   PHẦN 15: SỰ KIỆN VÀ KHỞI TẠO
-=================================================== */
-function initialize(){
+$("#envelopeBtn").addEventListener("click",openLetter);
+$("#closeLetter").addEventListener("click",closeLetter);
+
+/* =========================================
+   KẾT THÚC
+========================================= */
+$("#finalBtn").addEventListener("click",()=>{
+    const final=$("#finalHeart");
+    final.classList.remove("show");
+    void final.offsetWidth;
+    final.classList.add("show");
+
+    burst(innerWidth/2,innerHeight/2,140);
+    toast("Anh yêu vợ rất nhiều ❤️");
+});
+
+/* =========================================
+   TẠM DỪNG KHI ẨN TRANG
+========================================= */
+document.addEventListener("visibilitychange",()=>{
+    state.lastFrame=0;
+    state.lastDraw=0;
+
+    if(!document.hidden){
+        drawStars(performance.now());
+    }
+});
+
+window.addEventListener("resize",()=>{
+    clearTimeout(resizeTimer);
+    resizeTimer=setTimeout(()=>{
+        resizeCanvas();
+        updateAlbum();
+    },180);
+},{passive:true});
+
+/* =========================================
+   KHỞI TẠO WEBSITE
+========================================= */
+function init(){
     resizeCanvas();
-    requestAnimationFrame(animationLoop);
-
-    audio.src=CONFIG.music;
-    audio.volume=.65;
-    audio.addEventListener("error",()=>{
-        state.musicAvailable=false;
-        pauseMusic();
-    });
-
-    $("#letterBody").textContent=CONFIG.letter;
-    $("#letterSignature").textContent=
-        "Mãi yêu em! ❤️\n"+CONFIG.husbandName;
-
     buildProgress();
     buildAlbum();
-    updateMusicButton();
 
-    $("#giftBtn").addEventListener("click",openGift);
-    $("#musicBtn").addEventListener("click",toggleMusic);
+    requestAnimationFrame(animationLoop);
 
-    $$("[data-next]").forEach(button=>{
-        button.addEventListener("click",()=>{
-            goToScene(Number(button.dataset.next));
-        });
+    setInterval(createPetal,1000);
+    setInterval(createMeteor,5500);
+
+    audio.addEventListener("error",()=>{
+        $("#musicBtn").classList.remove("playing");
+        toast("Không tải được nhạc. Hãy kiểm tra music.mp3");
     });
 
-    $("#prevPhoto").addEventListener("click",()=>changePhoto(-1));
-    $("#nextPhoto").addEventListener("click",()=>changePhoto(1));
-
-    $("#envelopeBtn").addEventListener("click",openEnvelope);
-    $("#closeLetter").addEventListener("click",closeEnvelope);
-    $("#finalBtn").addEventListener("click",finishGift);
-
-    document.addEventListener("keydown",event=>{
-        if(state.scene===3){
-            if(event.key==="ArrowLeft")changePhoto(-1);
-            if(event.key==="ArrowRight")changePhoto(1);
-        }
-        if(event.key==="Escape"&&state.scene===5&&state.letterOpened){
-            closeEnvelope();
-        }
+    audio.addEventListener("pause",()=>{
+        $("#musicBtn").classList.remove("playing");
     });
 
-    let resizeTimer;
-    window.addEventListener("resize",()=>{
-        clearTimeout(resizeTimer);
-        resizeTimer=setTimeout(()=>{
-            resizeCanvas();
-            if(state.scene===3)renderAlbum();
-            if(state.scene===4)createLoveCloud();
-        },180);
+    audio.addEventListener("play",()=>{
+        $("#musicBtn").classList.add("playing");
     });
 
-    setInterval(createPetal,850);
+    console.info("Romantic 20/10 Deluxe ❤️");
 }
-initialize();
+
+init();
 </script>
 </body>
 </html>
