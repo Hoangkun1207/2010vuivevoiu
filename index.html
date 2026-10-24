@@ -1,437 +1,935 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#fff8fb">
-<meta name="description" content="Tạo món quà kỹ thuật số độc đáo bằng ảnh, lời chúc và những hiệu ứng đầy cảm xúc.">
-<title>HanTlove — Gửi đi một điều thật đẹp</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fff5fb">
+<title>Dearly — Gửi đi một điều thật đẹp</title>
 <style>
-:root{
-  --ink:#281a2c;--muted:#817281;--pink:#e94f91;--pink-dark:#c93678;
-  --rose:#fff0f6;--lilac:#f1edff;--cream:#fffaf5;--line:#f0e5ec;
-  --white:#fff;--green:#18865b;--shadow:0 18px 55px rgba(83,37,66,.09);
-  --radius:24px;--max:1180px;
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap');
+
+:root {
+  --pink: #f04491;
+  --pink2: #ff7bb7;
+  --purple: #a16ae8;
+  --ink: #29152f;
+  --muted: #806c88;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:92px}
-body{margin:0;color:var(--ink);background:#fffdfd;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}
-button,input{font:inherit}
-button,a{-webkit-tap-highlight-color:transparent}
-a{color:inherit;text-decoration:none}
-button{cursor:pointer}
-img{display:block;max-width:100%}
-.container{width:min(var(--max),calc(100% - 40px));margin:auto}
-.top-strip{background:#321e35;color:#fff4fa;text-align:center;padding:8px 14px;font-size:12px;letter-spacing:.15px}
-.top-strip strong{color:#ffb6d5}
-header{position:sticky;top:0;z-index:30;background:rgba(255,253,253,.88);backdrop-filter:blur(18px);border-bottom:1px solid rgba(240,229,236,.85)}
-.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-.brand{display:flex;align-items:center;gap:10px;font-size:23px;font-weight:850;letter-spacing:-1px}
-.brand-mark{display:grid;place-items:center;width:39px;height:39px;border-radius:14px;color:#fff;background:linear-gradient(140deg,#ff8ab9,#d94388);box-shadow:0 8px 20px #e94f9133;font-size:19px}
-.brand span:last-child{color:var(--pink)}
-.nav-links{display:flex;align-items:center;gap:29px;color:#665466;font-size:13px;font-weight:650}
-.nav-links a:hover{color:var(--pink)}
-.nav-actions{display:flex;gap:10px;align-items:center}
-.btn{border:1px solid var(--line);background:white;color:var(--ink);border-radius:999px;padding:12px 19px;font-size:13px;font-weight:750;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .2s,box-shadow .2s,background .2s}
-.btn:hover{transform:translateY(-2px);box-shadow:0 9px 22px #4a233010}
-.btn-primary{background:var(--pink);color:white;border-color:var(--pink);box-shadow:0 9px 23px #e94f9128}
-.btn-primary:hover{background:var(--pink-dark);border-color:var(--pink-dark)}
-.btn-soft{background:#fff2f7;color:var(--pink-dark);border-color:#ffe0ed}
-.menu-btn{display:none;border:1px solid var(--line);background:white;border-radius:13px;width:43px;height:43px;font-size:20px;color:var(--ink)}
-.hero{position:relative;overflow:hidden;padding:76px 0 66px;background:radial-gradient(ellipse at 12% 15%,#ffe7f1 0,transparent 34%),radial-gradient(ellipse at 88% 10%,#eee7ff 0,transparent 33%),linear-gradient(180deg,#fffafc,#fffdfd)}
-.hero:before,.hero:after{content:"";position:absolute;border:1px solid #f6dce9;border-radius:50%;pointer-events:none}
-.hero:before{width:440px;height:440px;right:-240px;top:110px}
-.hero:after{width:300px;height:300px;left:-220px;bottom:-100px}
-.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.04fr .96fr;gap:65px;align-items:center}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #f7dbe8;color:#b83e76;border-radius:999px;padding:8px 13px;font-size:12px;font-weight:800;box-shadow:0 5px 18px #7e365b09}
-.eyebrow-dot{width:7px;height:7px;background:#ee6ca4;border-radius:50%;box-shadow:0 0 0 4px #ffe4ef}
-h1{font-size:clamp(43px,5.5vw,70px);letter-spacing:-3.5px;line-height:1.06;margin:22px 0 20px;font-weight:850}
-.gradient-text{background:linear-gradient(105deg,#df4788,#a477d9 80%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero-copy>p{max-width:520px;color:var(--muted);font-size:16px;line-height:1.85;margin:0 0 28px}
-.hero-actions{display:flex;flex-wrap:wrap;gap:11px}
-.hero-proof{display:flex;align-items:center;gap:13px;margin-top:30px;color:#796a79;font-size:12px}
-.avatars{display:flex;padding-left:4px}
-.avatar{width:29px;height:29px;border:2px solid white;border-radius:50%;display:grid;place-items:center;margin-left:-5px;font-size:13px;background:#ffe3ef}
-.hero-proof strong{color:var(--ink)}
-.hero-art{min-height:430px;position:relative;display:grid;place-items:center}
-.art-glow{position:absolute;width:330px;height:330px;border-radius:50%;background:linear-gradient(135deg,#ffd7e8,#e4d9ff);filter:blur(1px);opacity:.85}
-.gift-envelope{position:relative;width:min(100%,350px);height:390px;border:7px solid rgba(255,255,255,.8);border-radius:28px;background:linear-gradient(150deg,#ffb4d0,#e85c99 58%,#a85fbb);box-shadow:0 30px 80px #bd579b30;transform:rotate(3deg);overflow:hidden}
-.gift-envelope:before{content:"";position:absolute;inset:14px;border:1px solid #ffffff88;border-radius:18px}
-.gift-spark{position:absolute;color:#fff8df;font-size:23px}
-.s1{top:36px;left:35px}.s2{top:67px;right:38px;font-size:16px}.s3{bottom:67px;left:44px;font-size:17px}
-.gift-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:white;padding:32px}
-.gift-center small{letter-spacing:3px;font-size:10px;font-weight:800}
-.gift-heart{font-size:93px;line-height:1.35;filter:drop-shadow(0 12px 20px #8e245b44);animation:heartbeat 2.2s ease-in-out infinite}
-.gift-center h3{font-family:Georgia,serif;font-weight:500;font-size:27px;margin:5px 0}
-.gift-center p{font-size:12px;color:#fff2f7;margin:0}
-.float-card{position:absolute;z-index:2;background:#fff;border:1px solid #f5e6ee;border-radius:17px;padding:13px 16px;box-shadow:var(--shadow);font-size:12px}
-.float-card strong{display:block;font-size:13px}
-.float-card span{color:var(--muted)}
-.float-one{left:-6px;bottom:42px;transform:rotate(-4deg)}
-.float-two{right:-5px;top:43px;transform:rotate(4deg)}
-.float-icon{display:inline-grid;place-items:center;width:29px;height:29px;border-radius:10px;background:#fff0f6;margin-right:8px;float:left}
-@keyframes heartbeat{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
-.trust-bar{border-top:1px solid #f4e8ef;border-bottom:1px solid #f4e8ef;background:#fff;padding:20px 0}
-.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
-.trust-item{display:flex;justify-content:center;align-items:center;gap:10px;color:#766879;font-size:12px}
-.trust-item b{display:block;color:var(--ink);font-size:13px}
-.trust-icon{width:39px;height:39px;border-radius:13px;background:#fff0f6;display:grid;place-items:center;font-size:18px}
-.section{padding:88px 0}
-.section-soft{background:#fff8fb}
-.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:30px}
-.section-kicker{font-size:11px;text-transform:uppercase;letter-spacing:2px;font-weight:850;color:var(--pink);margin-bottom:9px}
-h2{font-size:clamp(29px,4vw,42px);letter-spacing:-1.6px;line-height:1.2;margin:0 0 10px}
-.section-head p,.center-head p{margin:0;color:var(--muted);font-size:14px}
-.center-head{text-align:center;max-width:660px;margin:0 auto 35px}
-.center-head .section-kicker{margin-bottom:10px}
-.search-row{display:flex;gap:12px;margin:0 0 17px}
-.searchbox{position:relative;flex:1}
-.searchbox span{position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:17px;color:#9b8b9b}
-.searchbox input{width:100%;height:48px;border:1px solid var(--line);border-radius:14px;background:white;padding:0 15px 0 45px;outline:none;color:var(--ink)}
-.searchbox input:focus{border-color:#e9a1c3;box-shadow:0 0 0 3px #e94f9110}
-.filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
-.filter{border:1px solid var(--line);background:white;color:#6d5e6e;border-radius:999px;padding:9px 14px;font-size:12px;font-weight:750;transition:.2s}
-.filter:hover,.filter.active{background:var(--ink);border-color:var(--ink);color:white}
-.result-count{font-size:12px;color:var(--muted);margin-bottom:15px}
-.product-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
-.product-card{border:1px solid var(--line);border-radius:20px;background:white;overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s}
-.product-card:hover{transform:translateY(-5px);box-shadow:0 20px 45px #552b4212;border-color:#f0ccdd}
-.product-art{height:205px;position:relative;display:grid;place-items:center;overflow:hidden}
-.product-art:before,.product-art:after{content:"";position:absolute;border-radius:50%;border:1px solid #ffffff5c}
-.product-art:before{width:210px;height:210px}
-.product-art:after{width:150px;height:150px}
-.art-valentine{background:radial-gradient(circle at 50% 35%,#f99ac2,#9d3b72 60%,#4b244d)}
-.art-garden{background:radial-gradient(circle at 50% 40%,#f9d5a8,#b87377 60%,#52304e)}
-.art-galaxy{background:radial-gradient(circle at 50% 40%,#a79aff,#423c94 45%,#171b4c)}
-.art-birthday{background:radial-gradient(circle at 50% 35%,#ffd8a4,#ed8c93 52%,#76416e)}
-.art-letter{background:radial-gradient(circle at 50% 40%,#fff0cb,#e8a5bb 60%,#9c527e)}
-.art-memory{background:radial-gradient(circle at 50% 40%,#a9e2d0,#5e9eac 60%,#31516f)}
-.art-emoji{position:relative;z-index:1;font-size:78px;filter:drop-shadow(0 12px 16px #34133040);transition:transform .3s}
-.product-card:hover .art-emoji{transform:scale(1.08) rotate(-4deg)}
-.product-badge{position:absolute;top:14px;left:14px;z-index:2;background:#fff;color:#4c3447;border-radius:999px;padding:6px 10px;font-size:10px;font-weight:850;box-shadow:0 5px 15px #27122212}
-.product-badge.free{color:#16734c;background:#e9fff4}
-.product-body{padding:19px}
-.product-meta{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:9px}
-.category-label{font-size:10px;letter-spacing:.8px;text-transform:uppercase;font-weight:850;color:var(--pink)}
-.price-label{font-size:11px;color:#6d5e6e;font-weight:800}
-.product-body h3{font-size:18px;letter-spacing:-.4px;margin:0 0 8px}
-.product-body p{font-size:12px;color:var(--muted);min-height:40px;margin:0 0 17px}
-.product-actions{display:flex;gap:8px}
-.product-actions .btn{flex:1;padding:10px 11px;font-size:11px}
-.product-actions .btn-primary{flex:1.1}
-.empty-state{grid-column:1/-1;text-align:center;padding:50px 15px;color:var(--muted);border:1px dashed var(--line);border-radius:18px;background:white}
-.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:23px}
-.step-card{padding:28px 25px;border:1px solid var(--line);border-radius:20px;background:white;position:relative}
-.step-number{font-size:12px;letter-spacing:1px;font-weight:900;color:#d65a91}
-.step-icon{width:55px;height:55px;display:grid;place-items:center;border-radius:17px;background:var(--rose);font-size:25px;margin:18px 0}
-.step-card h3{font-size:18px;margin:0 0 8px}
-.step-card p{font-size:13px;color:var(--muted);margin:0}
-.step-card:not(:last-child):after{content:"→";position:absolute;right:-22px;top:46px;color:#d6a0ba;font-size:23px;z-index:1}
-.feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.feature-card{border-radius:24px;padding:30px;background:white;border:1px solid var(--line);min-height:230px;overflow:hidden;position:relative}
-.feature-card.pink-card{background:linear-gradient(135deg,#fff0f6,#fff9fc)}
-.feature-card.purple-card{background:linear-gradient(135deg,#f2edff,#fcfaff)}
-.feature-card h3{font-size:22px;margin:0 0 9px;letter-spacing:-.6px}
-.feature-card p{color:var(--muted);font-size:13px;max-width:350px;margin-bottom:20px}
-.feature-deco{position:absolute;right:20px;bottom:-14px;font-size:100px;opacity:.85;transform:rotate(-10deg)}
-.feature-card .btn{position:relative;z-index:1}
-.testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.quote-card{padding:23px;border:1px solid var(--line);border-radius:18px;background:white}
-.stars{color:#f2a23a;letter-spacing:2px;font-size:13px;margin-bottom:12px}
-.quote-card p{font-size:13px;color:#665766;margin:0 0 18px}
-.quote-person{display:flex;align-items:center;gap:10px;font-weight:800;font-size:12px}
-.person-avatar{width:35px;height:35px;border-radius:50%;display:grid;place-items:center;background:#ffe3ef}
-.cta{padding:0 0 85px}
-.cta-box{position:relative;overflow:hidden;border-radius:30px;padding:55px 35px;text-align:center;color:white;background:linear-gradient(120deg,#d94286,#aa6bd1 75%,#8068ce)}
-.cta-box:before,.cta-box:after{content:"♡";position:absolute;color:#ffffff20;font-size:150px;line-height:1}
-.cta-box:before{left:25px;top:-28px;transform:rotate(-18deg)}
-.cta-box:after{right:25px;bottom:-48px;transform:rotate(18deg)}
-.cta-box h2{position:relative;font-size:clamp(29px,4vw,43px);margin-bottom:12px}
-.cta-box p{position:relative;color:#ffeff7;font-size:14px;margin:0 auto 24px;max-width:520px}
-.cta-box .btn{position:relative;background:white;color:#b73578;border-color:white}
-footer{border-top:1px solid var(--line);background:#fff;padding:37px 0 20px}
-.footer-main{display:flex;justify-content:space-between;gap:30px;padding-bottom:28px}
-.footer-about{max-width:350px}
-.footer-about p{color:var(--muted);font-size:12px;margin-top:13px}
-.footer-links{display:flex;gap:55px}
-.footer-col strong{display:block;font-size:12px;margin-bottom:11px}
-.footer-col a{display:block;font-size:12px;color:var(--muted);margin:7px 0}
-.footer-bottom{border-top:1px solid var(--line);padding-top:17px;display:flex;justify-content:space-between;gap:12px;color:#958695;font-size:11px}
-.modal-backdrop{position:fixed;inset:0;z-index:100;background:#2513268c;backdrop-filter:blur(5px);display:none;align-items:center;justify-content:center;padding:18px}
-.modal-backdrop.open{display:flex}
-.modal{width:min(540px,100%);max-height:90vh;overflow:auto;border-radius:23px;background:white;box-shadow:0 30px 100px #170b1a55}
-.modal-head{display:flex;justify-content:space-between;align-items:center;padding:19px 22px;border-bottom:1px solid var(--line)}
-.modal-head h3{margin:0;font-size:17px}
-.close-modal{width:34px;height:34px;border:0;background:#fff1f6;border-radius:50%;font-size:20px;color:#9a4771}
-.modal-content{padding:22px}
-.modal-art{height:180px;border-radius:16px;display:grid;place-items:center;font-size:75px;margin-bottom:18px}
-.modal-content p{font-size:13px;color:var(--muted);margin:10px 0 18px}
-.modal-note{background:#fff7fa;border:1px solid #f6e0eb;border-radius:12px;padding:13px;color:#8d647b;font-size:12px;margin-bottom:18px}
-.modal-actions{display:flex;gap:9px}
-.modal-actions .btn{flex:1}
-.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);z-index:150;padding:12px 17px;border-radius:12px;background:#302035;color:white;font-size:12px;opacity:0;pointer-events:none;transition:.25s;box-shadow:var(--shadow)}
-.toast.show{opacity:1;transform:translate(-50%,0)}
-@media(max-width:900px){
- .hero-grid{gap:25px}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
- .nav-links{gap:16px}.hero-art{min-height:390px}.gift-envelope{width:300px;height:355px}
- .trust-grid{grid-template-columns:repeat(2,1fr)}.trust-item{justify-content:flex-start}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: 'Be Vietnam Pro', sans-serif;
+  background: #fffafd;
+  overflow-x: hidden;
 }
-@media(max-width:650px){
- .container{width:calc(100% - 28px)}
- .top-strip{font-size:10px}
- .nav{height:66px}.brand{font-size:21px}.nav-actions>.btn{display:none}
- .menu-btn{display:block}
- .nav-links{display:none;position:absolute;top:65px;left:14px;right:14px;background:white;border:1px solid var(--line);border-radius:16px;padding:17px;box-shadow:var(--shadow);flex-direction:column;align-items:stretch;gap:0}
- .nav-links.open{display:flex}.nav-links a{padding:10px 4px}
- .hero{padding:53px 0 42px}.hero-grid{grid-template-columns:1fr;gap:18px}
- .hero-copy{text-align:center}.hero-copy>p{font-size:14px;margin-inline:auto}
- h1{font-size:44px;letter-spacing:-2.3px}.hero-actions{justify-content:center}
- .hero-proof{justify-content:center}.hero-art{min-height:355px}
- .gift-envelope{width:270px;height:325px}.gift-heart{font-size:77px}.gift-center h3{font-size:24px}
- .float-one{left:0;bottom:16px}.float-two{right:0;top:13px}
- .trust-grid{gap:15px 10px}.trust-item{font-size:10px;gap:7px}.trust-item b{font-size:11px}
- .trust-icon{width:33px;height:33px;flex-shrink:0}
- .section{padding:62px 0}.section-head{display:block}.section-head>.btn{margin-top:17px}
- h2{font-size:32px}.search-row{display:block}.searchbox{margin-bottom:9px}
- .filter-row{flex-wrap:nowrap;overflow-x:auto;padding-bottom:8px}.filter{white-space:nowrap}
- .product-grid{grid-template-columns:1fr;gap:15px}.product-art{height:210px}
- .product-body p{min-height:0}.steps-grid{grid-template-columns:1fr;gap:13px}
- .step-card{padding:22px}.step-card:after{display:none}
- .feature-grid,.testimonial-grid{grid-template-columns:1fr}
- .feature-card{min-height:220px;padding:24px}.feature-deco{font-size:83px}
- .cta{padding-bottom:58px}.cta-box{padding:45px 19px;border-radius:22px}
- .cta-box:before{left:-15px}.cta-box:after{right:-15px}
- .footer-main{display:block}.footer-links{gap:35px;margin-top:25px}
- .footer-bottom{display:block}.footer-bottom span{display:block;margin-top:6px}
+body:before {
+  content: "";
+  position: fixed;
+  inset: -20%;
+  z-index: -3;
+  background:
+    radial-gradient(ellipse at 15% 18%, #ffd6e8 0, transparent 34%),
+    radial-gradient(ellipse at 88% 18%, #e8d9ff 0, transparent 31%),
+    radial-gradient(ellipse at 55% 80%, #fff0f7 0, transparent 40%);
+  animation: bgDrift 16s ease-in-out infinite alternate;
 }
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+@keyframes bgDrift {
+  to { transform: translate3d(2%,-2%,0) scale(1.05); filter: hue-rotate(10deg); }
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+
+.topline {
+  height: 34px;
+  background: linear-gradient(90deg,#32172f,#51234a,#32172f);
+  color: white;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: .3px;
+  display: grid;
+  place-items: center;
+}
+.topline span { animation: softGlow 3s infinite; }
+
+header {
+  height: 76px;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(255,252,255,.72);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid #f6dfea;
+  box-shadow: 0 5px 30px #9d3b6b08;
+}
+.nav {
+  max-width: 1120px;
+  height: 100%;
+  margin: auto;
+  padding: 0 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 21px;
+  font-weight: 900;
+  color: var(--pink);
+  letter-spacing: -1px;
+}
+.brand-icon {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  color: white;
+  border-radius: 14px;
+  background: linear-gradient(135deg,#ff9bc8,#e93e8d);
+  box-shadow: 0 8px 20px #f0449140;
+  animation: brandBeat 3s infinite;
+}
+@keyframes brandBeat {
+  0%,100% { transform: rotate(0) scale(1); }
+  50% { transform: rotate(-5deg) scale(1.07); }
+}
+.links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #573f60;
+}
+.links a { position: relative; transition: color .25s; }
+.links a:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg,var(--pink),var(--purple));
+  transition: width .3s;
+}
+.links a:hover { color: var(--pink); }
+.links a:hover:after { width: 100%; }
+
+.btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 0;
+  border-radius: 999px;
+  padding: 14px 22px;
+  font-size: 12px;
+  font-weight: 800;
+  transition: transform .25s, box-shadow .25s;
+}
+.btn:before {
+  content: "";
+  position: absolute;
+  inset: -40% auto -40% -50%;
+  width: 35%;
+  transform: rotate(20deg);
+  background: #ffffff85;
+  filter: blur(7px);
+  z-index: -1;
+  transition: left .65s;
+}
+.btn:hover:before { left: 130%; }
+.btn:hover { transform: translateY(-3px); }
+.primary {
+  color: white;
+  background: linear-gradient(115deg,#f34a99,#d83d9c 55%,#a66de9);
+  box-shadow: 0 10px 25px #e9429740;
+}
+.primary:hover { box-shadow: 0 15px 35px #e9429765; }
+.secondary {
+  color: #e63e8e;
+  background: #fff3fa;
+  border: 1px solid #ffd5e9;
+}
+.menu-btn {
+  display: none;
+  background: white;
+  border: 1px solid #f4d8e8;
+  border-radius: 12px;
+  padding: 8px 12px;
+  color: var(--pink);
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  min-height: 520px;
+  max-width: 1120px;
+  margin: auto;
+  padding: 68px 22px 60px;
+  display: grid;
+  grid-template-columns: 1.03fr .97fr;
+  align-items: center;
+  gap: 35px;
+}
+.hero-copy { position: relative; z-index: 2; }
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #ffd6e8;
+  background: #ffffffb8;
+  border-radius: 999px;
+  padding: 9px 13px;
+  color: #d93683;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .3px;
+  box-shadow: 0 6px 22px #f04c9410;
+  animation: rise .8s both;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #f45c9d;
+  box-shadow: 0 0 0 5px #f45c9d22;
+  animation: pulse 1.6s infinite;
+}
+h1 {
+  font-size: clamp(42px,5.1vw,66px);
+  line-height: 1.12;
+  letter-spacing: -3.2px;
+  margin: 25px 0 18px;
+  font-weight: 900;
+  animation: rise .9s .08s both;
+}
+.gradient-text {
+  background: linear-gradient(100deg,#e94491 5%,#bd59c7 52%,#8d6ce7);
+  background-size: 200% auto;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: shineText 5s linear infinite;
+}
+@keyframes shineText { to { background-position: 200% center; } }
+.hero-copy p {
+  max-width: 475px;
+  color: #8c748f;
+  font-size: 14px;
+  line-height: 1.95;
+  margin: 0 0 24px;
+  animation: rise .9s .18s both;
+}
+.hero-actions {
+  display: flex;
+  gap: 11px;
+  flex-wrap: wrap;
+  animation: rise .9s .25s both;
+}
+.social-proof {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 28px;
+  font-size: 10px;
+  color: #8c748f;
+  animation: rise .9s .35s both;
+}
+.avatars { display: flex; }
+.avatars span {
+  width: 27px;
+  height: 27px;
+  display: grid;
+  place-items: center;
+  border: 2px solid white;
+  border-radius: 50%;
+  background: #ffe0ef;
+  margin-left: -5px;
+  box-shadow: 0 3px 8px #c65c8a16;
+}
+.avatars span:first-child { margin-left: 0; }
+.social-proof b {
+  display: block;
+  color: #432b49;
+  font-size: 11px;
+  margin-bottom: 3px;
+}
+
+/* 3D GIFT */
+.visual {
+  height: 405px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  perspective: 1000px;
+}
+.orbit {
+  position: absolute;
+  border: 1px solid #f5a9d24c;
+  border-radius: 50%;
+  width: 350px;
+  height: 350px;
+  animation: spin 24s linear infinite;
+}
+.orbit:before,.orbit:after {
+  content: "✦";
+  position: absolute;
+  color: #f58ac1;
+  font-size: 18px;
+  top: 28px;
+  left: 40px;
+  text-shadow: 0 0 20px #ff5eaf;
+}
+.orbit:after {
+  top: auto;
+  left: auto;
+  right: 20px;
+  bottom: 55px;
+  color: #a786f5;
+}
+.orbit.two {
+  width: 440px;
+  height: 250px;
+  transform: rotate(-25deg);
+  border-color: #d8b4ff55;
+  animation: spinReverse 30s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes spinReverse { to { transform: rotate(-385deg); } }
+
+.gift-card {
+  width: min(300px,75vw);
+  height: 325px;
+  position: relative;
+  border-radius: 28px;
+  padding: 24px;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg,#ffacd1 0%,#ef5aab 45%,#b75cce 100%);
+  border: 1px solid #ffffffa8;
+  box-shadow: 0 35px 70px #d34c9d38,inset 0 1px 0 #fff;
+  transform: rotate(5deg);
+  transition: transform .18s ease-out;
+  transform-style: preserve-3d;
+  animation: cardFloat 5s ease-in-out infinite;
+}
+.gift-card:before {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  border: 1px solid #ffffff9c;
+  border-radius: 21px;
+  pointer-events: none;
+}
+.gift-card:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  background: linear-gradient(120deg,transparent 25%,#ffffff45 43%,transparent 60%);
+  background-size: 220% 100%;
+  animation: cardShimmer 5s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes cardFloat {
+  0%,100% { translate: 0 0; rotate: 0deg; }
+  50% { translate: 0 -12px; rotate: 1deg; }
+}
+@keyframes cardShimmer {
+  0%,35% { background-position: 150% 0; }
+  75%,100% { background-position: -80% 0; }
+}
+.mini-label {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  margin-bottom: 20px;
+  opacity: .95;
+}
+.big-heart {
+  font-size: 78px;
+  filter: drop-shadow(0 12px 13px #9d235e45);
+  animation: heartBeat 1.9s infinite;
+  transform: translateZ(35px);
+}
+@keyframes heartBeat {
+  0%,100% { transform: scale(1) translateZ(35px); }
+  10%,30% { transform: scale(1.12) translateZ(35px); }
+  20%,40% { transform: scale(1) translateZ(35px); }
+}
+.card-title {
+  font: 700 25px 'Playfair Display',serif;
+  margin: 15px 0 7px;
+  transform: translateZ(24px);
+}
+.card-sub {
+  font-size: 10px;
+  opacity: .9;
+  transform: translateZ(18px);
+}
+.float-note {
+  position: absolute;
+  background: #ffffffeb;
+  backdrop-filter: blur(12px);
+  padding: 13px 16px;
+  border: 1px solid white;
+  border-radius: 17px;
+  box-shadow: 0 15px 40px #9e49851c;
+  font-size: 10px;
+  z-index: 3;
+  animation: noteFloat 4s ease-in-out infinite;
+}
+.float-note b { display: block; font-size: 11px; margin: 0 0 4px; }
+.float-note small { color: #9a849d; }
+.note-one { top: 67px; right: 1%; transform: rotate(5deg); }
+.note-two { bottom: 53px; left: 0; transform: rotate(-5deg); animation-delay: -2s; }
+@keyframes noteFloat {
+  0%,100% { translate: 0 0; }
+  50% { translate: 0 -10px; }
+}
+.spark { position: absolute; color: #ff8cc5; animation: sparkle 2.2s ease-in-out infinite; }
+.spark.s1 { top: 32px; left: 18%; font-size: 22px; }
+.spark.s2 { right: 5%; top: 45%; font-size: 28px; animation-delay: .7s; }
+.spark.s3 { left: 9%; bottom: 50px; font-size: 18px; animation-delay: 1.1s; }
+@keyframes sparkle {
+  0%,100% { opacity: .3; transform: scale(.7) rotate(0); }
+  50% { opacity: 1; transform: scale(1.2) rotate(35deg); filter: drop-shadow(0 0 10px #ff8cc5); }
+}
+
+/* FEATURES AND GIFT COLLECTION */
+.feature-strip {
+  border-block: 1px solid #f7e2ed;
+  background: #ffffffa3;
+  backdrop-filter: blur(10px);
+}
+.features {
+  max-width: 1120px;
+  margin: auto;
+  padding: 17px 22px;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 18px;
+}
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 8px;
+  border-radius: 15px;
+  transition: background .25s,transform .25s;
+}
+.feature:hover { background: white; transform: translateY(-4px); }
+.feature-icon {
+  width: 39px;
+  height: 39px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  background: linear-gradient(135deg,#ffe5f0,#f5eaff);
+  font-size: 18px;
+}
+.feature b { font-size: 11px; display: block; margin-bottom: 4px; }
+.feature small { font-size: 10px; color: #9b849e; }
+.section { max-width: 1120px; margin: auto; padding: 78px 22px; }
+.section-head { text-align: center; max-width: 650px; margin: 0 auto 35px; }
+.kicker { font-size: 10px; font-weight: 900; color: #ed4a94; letter-spacing: 2.5px; text-transform: uppercase; }
+h2 { font-size: clamp(29px,4vw,43px); line-height: 1.2; letter-spacing: -1.6px; margin: 12px 0; color: #2d1934; }
+.section-head p { color: #927d96; font-size: 13px; line-height: 1.8; }
+.cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+.gift-option {
+  border: 1px solid #f4ddea;
+  border-radius: 25px;
+  overflow: hidden;
+  background: #ffffffb8;
+  box-shadow: 0 12px 40px #7c3e6c08;
+  transition: transform .35s,box-shadow .35s,border-color .35s;
+  position: relative;
+}
+.gift-option:hover {
+  transform: translateY(-10px) rotateX(2deg);
+  box-shadow: 0 25px 60px #c65c8a22;
+  border-color: #f6b6d5;
+}
+.option-art {
+  height: 180px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 45%,#fff 0,transparent 42%),linear-gradient(135deg,#ffe0ef,#f4e5ff);
+}
+.option-art:before,.option-art:after {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 1px solid #fff9;
+  border-radius: 50%;
+  animation: spin 20s linear infinite;
+}
+.option-art:after { width: 145px; height: 145px; animation: spinReverse 17s linear infinite; }
+.option-emoji {
+  font-size: 65px;
+  filter: drop-shadow(0 10px 15px #c85e9a30);
+  transition: transform .4s;
+}
+.gift-option:hover .option-emoji { transform: scale(1.18) rotate(-8deg); }
+.option-content { padding: 20px; }
+.option-content h3 { font-size: 17px; margin: 0 0 8px; }
+.option-content p { font-size: 12px; line-height: 1.8; color: #927d96; margin: 0 0 16px; }
+.pill {
+  display: inline-block;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: #fff0f7;
+  color: #db438b;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+/* HOW IT WORKS */
+.how {
+  background: linear-gradient(135deg,#fff2f8a8,#f6efff9c);
+  border-block: 1px solid #f7e2ef;
+}
+.steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.step {
+  padding: 25px;
+  border: 1px solid #f5ddec;
+  border-radius: 22px;
+  background: #ffffffb8;
+  transition: transform .3s,box-shadow .3s;
+}
+.step:hover { transform: translateY(-6px); box-shadow: 0 20px 40px #b74d8518; }
+.step-num {
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  background: linear-gradient(135deg,#ff9cc8,#bc77ec);
+  color: white;
+  font-weight: 900;
+  box-shadow: 0 8px 20px #dd64ad33;
+}
+.step h3 { font-size: 15px; margin: 18px 0 8px; }
+.step p { font-size: 12px; color: #927d96; line-height: 1.8; margin: 0; }
+
+/* CALL TO ACTION */
+.cta {
+  max-width: 1076px;
+  margin: 15px auto 80px;
+  padding: 48px 28px;
+  border-radius: 30px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  color: white;
+  background: linear-gradient(115deg,#f04a98,#c451b9 55%,#9470e9);
+  box-shadow: 0 25px 65px #d64d9c2e;
+}
+.cta:before,.cta:after {
+  content: "♡";
+  position: absolute;
+  font-size: 170px;
+  opacity: .1;
+  animation: noteFloat 6s infinite;
+}
+.cta:before { left: 3%; top: -45px; }
+.cta:after { right: 5%; bottom: -70px; animation-delay: -3s; }
+.cta h2 { color: white; position: relative; }
+.cta p { font-size: 13px; opacity: .9; position: relative; }
+.cta .btn { margin-top: 12px; background: white; color: #d94091; position: relative; }
+footer { padding: 25px; text-align: center; color: #9c879f; font-size: 11px; border-top: 1px solid #f4dfeb; }
+
+/* SCROLL REVEAL + FLOATING PARTICLES */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px) scale(.985);
+  transition: opacity .75s ease,transform .75s cubic-bezier(.2,.8,.2,1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
+.particle-layer { position: fixed; inset: 0; pointer-events: none; z-index: 30; overflow: hidden; }
+.particle {
+  position: absolute;
+  top: -40px;
+  opacity: .8;
+  animation: fall linear forwards;
+  filter: drop-shadow(0 3px 4px #e8529b26);
+}
+@keyframes fall {
+  to { transform: translate3d(var(--drift),110vh,0) rotate(720deg); opacity: .1; }
+}
+.cursor-glow {
+  position: fixed;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+  background: radial-gradient(circle,#ffb9dd25,transparent 68%);
+  transform: translate(-50%,-50%);
+}
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 25px;
+  transform: translate(-50%,30px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 50;
+  background: #32172f;
+  color: white;
+  padding: 13px 19px;
+  border-radius: 999px;
+  font-size: 12px;
+  box-shadow: 0 12px 30px #38162f35;
+  transition: .35s;
+}
+.toast.show { opacity: 1; transform: translate(-50%,0); }
+#topBtn {
+  position: fixed;
+  bottom: 24px;
+  right: 22px;
+  width: 43px;
+  height: 43px;
+  border: 0;
+  border-radius: 15px;
+  color: white;
+  background: linear-gradient(135deg,#f34a99,#a16ae8);
+  box-shadow: 0 8px 25px #d44c9c44;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: .3s;
+  z-index: 19;
+}
+#topBtn.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse { 50% { box-shadow: 0 0 0 8px #f45c9d08; } }
+@keyframes softGlow { 50% { text-shadow: 0 0 12px #ff9dd2; } }
+
+@media(max-width:800px) {
+  .links { gap: 14px; }
+  .links a { font-size: 11px; }
+  .nav>.btn { padding: 12px 15px; }
+  .hero { grid-template-columns: 1fr; text-align: center; padding-top: 50px; gap: 10px; }
+  .hero-copy p { margin-inline: auto; }
+  .hero-actions,.social-proof { justify-content: center; }
+  .visual { height: 380px; }
+  .features { grid-template-columns: repeat(2,1fr); }
+  .cards { gap: 14px; }
+  .option-art { height: 145px; }
+  .option-content { padding: 16px; }
+}
+@media(max-width:600px) {
+  .topline { font-size: 9px; padding: 0 8px; }
+  .nav { padding: 0 16px; }
+  .menu-btn { display: block; }
+  .links {
+    display: none;
+    position: absolute;
+    top: 76px;
+    left: 12px;
+    right: 12px;
+    padding: 18px;
+    background: #fffafef5;
+    border: 1px solid #f5ddeb;
+    border-radius: 18px;
+    box-shadow: 0 20px 50px #632b4c20;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+  .links.open { display: flex; }
+  .links a { font-size: 13px; padding: 4px; }
+  .nav>.btn { font-size: 10px; padding: 12px 14px; }
+  .hero { padding: 45px 18px 35px; }
+  h1 { letter-spacing: -2px; font-size: 43px; }
+  .hero-copy p { font-size: 12px; }
+  .visual { height: 350px; }
+  .gift-card { height: 290px; width: 255px; }
+  .card-title { font-size: 22px; }
+  .note-one { right: -2%; top: 40px; }
+  .note-two { left: -2%; bottom: 35px; }
+  .float-note { padding: 10px 12px; }
+  .features { padding: 12px; gap: 5px; }
+  .feature { gap: 8px; padding: 7px 4px; }
+  .feature-icon { width: 32px; height: 32px; font-size: 15px; }
+  .feature b { font-size: 10px; }
+  .feature small { font-size: 9px; }
+  .section { padding: 58px 17px; }
+  .cards,.steps { grid-template-columns: 1fr; }
+  .option-art { height: 175px; }
+  .cta { margin: 0 15px 55px; padding: 35px 20px; }
+  .cta h2 { font-size: 28px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  *,*:before,*:after {
+    animation-duration: .01ms!important;
+    animation-iteration-count: 1!important;
+    scroll-behavior: auto!important;
+    transition-duration: .01ms!important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
 </style>
 </head>
 <body>
-<div class="top-strip">💌 Một món quà nhỏ có thể tạo nên <strong>một kỷ niệm thật lớn</strong> · Bắt đầu sáng tạo ngay hôm nay</div>
+<div class="topline"><span>💌 Một món quà nhỏ có thể tạo nên một kỷ niệm thật lớn · Bắt đầu sáng tạo ngay hôm nay</span></div>
+
 <header>
- <div class="container nav">
-  <a class="brand" href="#home" aria-label="Dearly trang chủ"><span class="brand-mark">♡</span><span>dearly<span>.</span></span></a>
-  <nav class="nav-links" id="navLinks">
-   <a href="#home">Trang chủ</a><a href="#gallery">Kho mẫu quà</a><a href="#how">Cách hoạt động</a><a href="#why">Vì sao Dearly</a>
-  </nav>
-  <div class="nav-actions"><a class="btn btn-primary" href="#gallery">Tạo món quà <span>↗</span></a><button class="menu-btn" id="menuBtn" aria-label="Mở menu" aria-expanded="false">☰</button></div>
- </div>
+<nav class="nav">
+  <a href="#home" class="brand"><span class="brand-icon">♡</span> dearly.</a>
+  <button class="menu-btn" id="menuBtn" aria-label="Mở menu">☰</button>
+  <div class="links" id="navLinks">
+    <a href="#home">Trang chủ</a>
+    <a href="#collection">Kho mẫu quà</a>
+    <a href="#how">Cách hoạt động</a>
+    <a href="#why">Vì sao Dearly</a>
+  </div>
+  <a class="btn primary" href="#collection">Tạo món quà ↗</a>
+</nav>
 </header>
 
 <main>
 <section class="hero" id="home">
- <div class="container hero-grid">
   <div class="hero-copy">
-   <span class="eyebrow"><span class="eyebrow-dot"></span> MÓN QUÀ SỐ · ĐƯỢC TẠO BẰNG YÊU THƯƠNG</span>
-   <h1>Gửi đi một điều<br>thật <span class="gradient-text">đẹp đẽ.</span></h1>
-   <p>Biến những bức ảnh, lời muốn nói và giai điệu thân quen thành một món quà online chỉ dành riêng cho người ấy. Dễ tạo, đáng nhớ và mang dấu ấn của riêng bạn.</p>
-   <div class="hero-actions"><a class="btn btn-primary" href="#gallery">♡ Bắt đầu sáng tạo</a><a class="btn btn-soft" href="#how">Khám phá cách làm <span>→</span></a></div>
-   <div class="hero-proof"><div class="avatars"><span class="avatar">🌷</span><span class="avatar">💗</span><span class="avatar">🧸</span><span class="avatar">✨</span></div><div><strong>Một món quà rất riêng</strong><br>Cho người khiến bạn mỉm cười mỗi ngày</div></div>
+    <div class="eyebrow"><span class="dot"></span> MÓN QUÀ SỐ · ĐƯỢC TẠO BẰNG YÊU THƯƠNG</div>
+    <h1>Gửi đi một điều<br>thật <span class="gradient-text">đẹp đẽ.</span></h1>
+    <p>Biến những bức ảnh, lời muốn nói và giai điệu thân quen thành một món quà online chỉ dành riêng cho người ấy. Dễ tạo, đáng nhớ và mang dấu ấn của riêng bạn.</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="#collection">♡ Bắt đầu sáng tạo</a>
+      <a class="btn secondary" href="#how">Khám phá cách làm →</a>
+    </div>
+    <div class="social-proof">
+      <div class="avatars"><span>🌷</span><span>💗</span><span>🧸</span><span>✨</span></div>
+      <div><b>Một món quà rất riêng</b>Cho người khiến bạn mỉm cười mỗi ngày</div>
+    </div>
   </div>
-  <div class="hero-art" aria-label="Minh họa món quà tình yêu">
-   <div class="art-glow"></div>
-   <div class="gift-envelope"><span class="gift-spark s1">✦</span><span class="gift-spark s2">✧</span><span class="gift-spark s3">✦</span><div class="gift-center"><small>MADE WITH LOVE</small><div class="gift-heart">💝</div><h3>To my favorite person</h3><p>Một chút yêu thương gửi đến cậu.</p></div></div>
-   <div class="float-card float-one"><span class="float-icon">💌</span><strong>Lời nhắn của riêng bạn</strong><span>Viết từ trái tim</span></div>
-   <div class="float-card float-two"><span class="float-icon">✨</span><strong>Thật dễ để tạo</strong><span>Không cần biết code</span></div>
+
+  <div class="visual" id="visual">
+    <div class="orbit"></div>
+    <div class="orbit two"></div>
+    <span class="spark s1">✦</span>
+    <span class="spark s2">✧</span>
+    <span class="spark s3">✦</span>
+    <div class="gift-card" id="giftCard">
+      <div class="mini-label">MADE WITH LOVE</div>
+      <div class="big-heart">💝</div>
+      <div class="card-title">To my favorite person</div>
+      <div class="card-sub">Một chút yêu thương gửi đến cậu.</div>
+    </div>
+    <div class="float-note note-one"><b>✨ Thật dễ để tạo</b><small>Không cần biết code</small></div>
+    <div class="float-note note-two"><b>💌 Lời nhắn của riêng bạn</b><small>Viết từ trái tim</small></div>
   </div>
- </div>
 </section>
 
-<section class="trust-bar">
- <div class="container trust-grid">
-  <div class="trust-item"><span class="trust-icon">🎨</span><div><b>Cá nhân hóa</b>Thiết kế theo câu chuyện</div></div>
-  <div class="trust-item"><span class="trust-icon">📱</span><div><b>Thân thiện điện thoại</b>Mở đẹp trên mọi màn hình</div></div>
-  <div class="trust-item"><span class="trust-icon">💌</span><div><b>Dễ dàng chia sẻ</b>Gửi món quà qua link</div></div>
-  <div class="trust-item"><span class="trust-icon">🌷</span><div><b>Dành cho mọi dịp</b>Tình yêu, sinh nhật và hơn thế</div></div>
- </div>
+<div class="feature-strip">
+  <div class="features">
+    <div class="feature"><div class="feature-icon">🎨</div><div><b>Cá nhân hóa</b><small>Thiết kế theo câu chuyện</small></div></div>
+    <div class="feature"><div class="feature-icon">📱</div><div><b>Thân thiện điện thoại</b><small>Mở đẹp trên mọi màn hình</small></div></div>
+    <div class="feature"><div class="feature-icon">💌</div><div><b>Dễ dàng chia sẻ</b><small>Gửi món quà qua link</small></div></div>
+    <div class="feature"><div class="feature-icon">🌷</div><div><b>Dành cho mọi dịp</b><small>Tình yêu, sinh nhật và hơn thế</small></div></div>
+  </div>
+</div>
+
+<section class="section" id="collection">
+  <div class="section-head reveal">
+    <div class="kicker">THE GIFT COLLECTION</div>
+    <h2>Món quà nào kể đúng <span class="gradient-text">câu chuyện của bạn?</span></h2>
+    <p>Chọn một ý tưởng, thêm những điều chỉ hai người hiểu, rồi biến nó thành một kỷ niệm nho nhỏ thật khó quên.</p>
+  </div>
+  <div class="cards">
+    <article class="gift-option reveal">
+      <div class="option-art"><span class="option-emoji">💌</span></div>
+      <div class="option-content">
+        <span class="pill">NGỌT NGÀO</span>
+        <h3>Lá thư gửi người thương</h3>
+        <p>Một lá thư điện tử xinh xắn, lời nhắn chân thành và những điều bình thường khó nói thành lời.</p>
+        <button class="btn primary createBtn" data-type="Lá thư gửi người thương">Chọn mẫu này ↗</button>
+      </div>
+    </article>
+    <article class="gift-option reveal">
+      <div class="option-art" style="background:radial-gradient(circle at 50% 45%,#fff 0,transparent 42%),linear-gradient(135deg,#ffe8dc,#ffcae0)">
+        <span class="option-emoji">📸</span>
+      </div>
+      <div class="option-content">
+        <span class="pill">KỶ NIỆM</span>
+        <h3>Album những ngày thương</h3>
+        <p>Gom những tấm ảnh, khoảnh khắc đáng nhớ và chú thích nhỏ thành một câu chuyện riêng.</p>
+        <button class="btn primary createBtn" data-type="Album những ngày thương">Chọn mẫu này ↗</button>
+      </div>
+    </article>
+    <article class="gift-option reveal">
+      <div class="option-art" style="background:radial-gradient(circle at 50% 45%,#fff 0,transparent 42%),linear-gradient(135deg,#e7e1ff,#fbd9f1)">
+        <span class="option-emoji">🎵</span>
+      </div>
+      <div class="option-content">
+        <span class="pill">GIAI ĐIỆU</span>
+        <h3>Bài hát của chúng mình</h3>
+        <p>Một món quà mang âm nhạc, câu chuyện và lời nhắn khiến người nhận nhớ ngay đến bạn.</p>
+        <button class="btn primary createBtn" data-type="Bài hát của chúng mình">Chọn mẫu này ↗</button>
+      </div>
+    </article>
+  </div>
 </section>
 
-<section class="section" id="gallery">
- <div class="container">
-  <div class="section-head">
-   <div><div class="section-kicker">THE GIFT COLLECTION</div><h2>Món quà nào kể đúng <span class="gradient-text">câu chuyện của bạn?</span></h2><p>Chọn một ý tưởng, rồi biến nó thành điều thật đặc biệt.</p></div>
-   <a href="#how" class="btn">Cách tạo quà <span>→</span></a>
+<section class="how" id="how">
+  <div class="section">
+    <div class="section-head reveal">
+      <div class="kicker">SIMPLE & SWEET</div>
+      <h2>Ba bước nhỏ, một món quà <span class="gradient-text">đặc biệt.</span></h2>
+      <p>Không cần cầu kỳ. Chỉ cần một chút thời gian và một điều thật lòng muốn gửi đi.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="step-num">01</div><h3>Chọn mẫu bạn thích</h3><p>Tìm kiểu quà phù hợp với người ấy và câu chuyện mà bạn muốn kể.</p></div>
+      <div class="step reveal"><div class="step-num">02</div><h3>Thêm dấu ấn riêng</h3><p>Viết lời nhắn, chọn ảnh, màu sắc và những chi tiết làm món quà thành của riêng hai người.</p></div>
+      <div class="step reveal"><div class="step-num">03</div><h3>Gửi đi yêu thương</h3><p>Xem lại thành phẩm rồi chia sẻ món quà đến người đặc biệt của bạn.</p></div>
+    </div>
   </div>
-  <div class="search-row"><div class="searchbox"><span>⌕</span><input id="searchInput" type="search" placeholder="Tìm mẫu quà: Valentine, sinh nhật, thiên hà..." aria-label="Tìm mẫu quà"></div><button class="btn btn-soft" id="clearSearch">Xóa tìm kiếm</button></div>
-  <div class="filter-row" id="filters">
-   <button class="filter active" data-filter="all">✦ Tất cả mẫu</button>
-   <button class="filter" data-filter="love">💗 Tình yêu</button>
-   <button class="filter" data-filter="birthday">🎂 Sinh nhật</button>
-   <button class="filter" data-filter="3d">🌌 3D & hiệu ứng</button>
-   <button class="filter" data-filter="letter">💌 Thư & lời chúc</button>
-   <button class="filter" data-filter="memory">🌷 Kỷ niệm</button>
-  </div>
-  <div class="result-count" id="resultCount">Đang hiển thị 6 ý tưởng quà tặng</div>
-  <div class="product-grid" id="productGrid">
-   <article class="product-card" data-category="love letter" data-name="bó hoa kỷ niệm lời chúc thư ảnh">
-    <div class="product-art art-valentine"><span class="product-badge free">Có mẫu miễn phí</span><span class="art-emoji">💐</span></div>
-    <div class="product-body"><div class="product-meta"><span class="category-label">Tình yêu · Kỷ niệm</span><span class="price-label">Miễn phí*</span></div><h3>Bó hoa kỷ niệm</h3><p>Bó hoa ảnh, lời chúc ngọt ngào và lá thư dành riêng cho người ấy.</p><div class="product-actions"><button class="btn btn-primary create-btn" data-id="flower">Tạo quà <span>↗</span></button><button class="btn preview-btn" data-id="flower">Xem mẫu</button></div></div>
-   </article>
-   <article class="product-card" data-category="birthday memory" data-name="sinh nhật bất ngờ bánh kem lời chúc">
-    <div class="product-art art-birthday"><span class="product-badge free">Dễ tùy chỉnh</span><span class="art-emoji">🎂</span></div>
-    <div class="product-body"><div class="product-meta"><span class="category-label">Sinh nhật</span><span class="price-label">Miễn phí*</span></div><h3>Sinh nhật bất ngờ</h3><p>Một tấm thiệp sinh nhật vui tươi với lời chúc, ảnh và những điều đáng nhớ.</p><div class="product-actions"><button class="btn btn-primary create-btn" data-id="birthday">Tạo quà <span>↗</span></button><button class="btn preview-btn" data-id="birthday">Xem mẫu</button></div></div>
-   </article>
-   <article class="product-card" data-category="love 3d" data-name="thiên hà tình yêu galaxy trái tim không gian">
-    <div class="product-art art-galaxy"><span class="product-badge">Hiệu ứng 3D</span><span class="art-emoji">🌌</span></div>
-    <div class="product-body"><div class="product-meta"><span class="category-label">3D · Tình yêu</span><span class="price-label">Tùy cấu hình</span></div><h3>Thiên hà tình yêu</h3><p>Không gian lung linh, ảnh kỷ niệm và những dòng chữ dành riêng cho hai người.</p><div class="product-actions"><button class="btn btn-primary create-btn" data-id="galaxy">Tạo quà <span>↗</span></button><button class="btn preview-btn" data-id="galaxy">Xem mẫu</button></div></div>
-   </article>
-   <article class="product-card" data-category="letter love" data-name="lá thư tình yêu lời nhắn thư bí mật">
-    <div class="product-art art-letter"><span class="product-badge free">Đơn giản & tinh tế</span><span class="art-emoji">💌</span></div>
-    <div class="product-body"><div class="product-meta"><span class="category-label">Thư & lời chúc</span><span class="price-label">Miễn phí*</span></div><h3>Lá thư bí mật</h3><p>Mở một lá thư dịu dàng, nơi bạn có thể nói những điều ngoài đời còn ngại ngùng.</p><div class="product-actions"><button class="btn btn-primary create-btn" data-id="letter">Tạo quà <span>↗</span></button><button class="btn preview-btn" data-id="letter">Xem mẫu</button></div></div>
-   </article>
-   <article class="product-card" data-category="memory 3d" data-name="album ảnh kỷ niệm quả cầu ảnh">
-    <div class="product-art art-garden"><span class="product-badge">Lưu giữ kỷ niệm</span><span class="art-emoji">📸</span></div>
-    <div class="product-body"><div class="product-meta"><span class="category-label">Kỷ niệm</span><span class="price-label">Tùy cấu hình</span></div><h3>Album của chúng mình</h3><p>Gom những khoảnh khắc yêu thích thành một món quà để cùng xem lại.</p><div class="product-actions"><button class="btn btn-primary create-btn" data-id="album">Tạo quà <span>↗</span></button><button class="btn preview-btn" data-id="album">Xem mẫu</button></div></div>
-   </article>
-   <article class="product-card" data-category="love 3d" data-name="trái tim 3d đếm ngày yêu tình yêu">
-    <div class="product-art art-memory"><span class="product-badge">Đầy cảm xúc</span><span class="art-emoji">💞</span></div>
-    <div class="product-body"><div class="product-meta"><span class="category-label">Tình yêu · 3D</span><span class="price-label">Tùy cấu hình</span></div><h3>Đếm ngày bên nhau</h3><p>Một góc nhỏ lưu dấu ngày đặc biệt và hành trình của hai người.</p><div class="product-actions"><button class="btn btn-primary create-btn" data-id="days">Tạo quà <span>↗</span></button><button class="btn preview-btn" data-id="days">Xem mẫu</button></div></div>
-   </article>
-  </div>
- </div>
-</section>
-
-<section class="section section-soft" id="how">
- <div class="container">
-  <div class="center-head"><div class="section-kicker">SIMPLE & SWEET</div><h2>Ba bước nhỏ, một món quà <span class="gradient-text">đáng nhớ</span></h2><p>Không cần thiết kế, không cần lập trình. Chỉ cần điều bạn muốn gửi gắm.</p></div>
-  <div class="steps-grid">
-   <article class="step-card"><span class="step-number">BƯỚC 01</span><div class="step-icon">🎁</div><h3>Chọn mẫu bạn thích</h3><p>Khám phá các ý tưởng theo dịp tặng quà và chọn phong cách hợp với người nhận.</p></article>
-   <article class="step-card"><span class="step-number">BƯỚC 02</span><div class="step-icon">📝</div><h3>Thêm dấu ấn riêng</h3><p>Viết lời nhắn, chọn ảnh và điều chỉnh nội dung để món quà mang câu chuyện của bạn.</p></article>
-   <article class="step-card"><span class="step-number">BƯỚC 03</span><div class="step-icon">💌</div><h3>Chia sẻ niềm vui</h3><p>Xem lại món quà rồi chia sẻ bằng đường link. Các tính năng tạo link thật sẽ cần hệ thống lưu trữ.</p></article>
-  </div>
- </div>
 </section>
 
 <section class="section" id="why">
- <div class="container">
-  <div class="center-head"><div class="section-kicker">MADE FOR YOUR MOMENTS</div><h2>Không chỉ là một đường link</h2><p>Đó là cách lưu giữ cảm xúc bằng một trải nghiệm nhỏ nhưng có ý nghĩa.</p></div>
-  <div class="feature-grid">
-   <article class="feature-card pink-card"><div class="section-kicker">YOUR STORY</div><h3>Mỗi món quà, một câu chuyện</h3><p>Thêm tên, ảnh, lời chúc và những chi tiết khiến người nhận biết món quà này được làm riêng cho họ.</p><a href="#gallery" class="btn btn-soft">Tìm mẫu phù hợp →</a><span class="feature-deco">💗</span></article>
-   <article class="feature-card purple-card"><div class="section-kicker">LITTLE DETAILS</div><h3>Những điều nhỏ tạo nên khác biệt</h3><p>Từ thiệp dịu dàng đến không gian 3D, hãy chọn trải nghiệm hợp với khoảnh khắc bạn muốn tạo ra.</p><a href="#gallery" class="btn">Khám phá bộ sưu tập →</a><span class="feature-deco">✨</span></article>
+  <div class="section-head reveal">
+    <div class="kicker">A LITTLE MORE LOVE</div>
+    <h2>Vì điều nhỏ bé cũng xứng đáng <span class="gradient-text">được nâng niu.</span></h2>
+    <p>Dearly lấy cảm hứng từ những món quà số lãng mạn: mềm mại, dễ dùng và tràn ngập những chi tiết nhỏ đầy cảm xúc.</p>
   </div>
- </div>
 </section>
 
-<section class="section section-soft">
- <div class="container">
-  <div class="center-head"><div class="section-kicker">KIND WORDS</div><h2>Một chút yêu thương được trao đi</h2><p>Những món quà ý nghĩa bắt đầu từ sự chân thành.</p></div>
-  <div class="testimonial-grid">
-   <article class="quote-card"><div class="stars">★★★★★</div><p>“Mình muốn làm điều gì đó khác một tin nhắn bình thường. Một trang quà nhỏ có thể gom hết những lời mình muốn nói.”</p><div class="quote-person"><span class="person-avatar">🌷</span> Một người thích tạo bất ngờ</div></article>
-   <article class="quote-card"><div class="stars">★★★★★</div><p>“Ý tưởng rất dễ thương. Điều mình thích nhất là có thể chọn nội dung để món quà đúng với câu chuyện của hai đứa.”</p><div class="quote-person"><span class="person-avatar">💗</span> Một trái tim đang yêu</div></article>
-   <article class="quote-card"><div class="stars">★★★★★</div><p>“Không cần món quà thật đắt tiền. Đôi khi một lời nhắn được chuẩn bị cẩn thận đã đủ làm ai đó vui cả ngày.”</p><div class="quote-person"><span class="person-avatar">🧸</span> Người tin vào điều nhỏ bé</div></article>
-  </div>
- </div>
-</section>
-
-<section class="cta">
- <div class="container"><div class="cta-box"><h2>Điều đẹp đẽ nhất,<br>hãy gửi bằng cả trái tim.</h2><p>Chọn một mẫu quà và bắt đầu tạo nên khoảnh khắc đáng nhớ của riêng bạn.</p><a href="#gallery" class="btn">♡ Bắt đầu tạo quà</a></div></div>
+<section class="cta reveal">
+  <div class="kicker" style="color:#ffe1f2">YOUR STORY, YOUR GIFT</div>
+  <h2>Sẵn sàng làm ai đó mỉm cười chưa? 💗</h2>
+  <p>Bắt đầu với một lời nhắn nhỏ — phần còn lại để cảm xúc dẫn đường.</p>
+  <a class="btn" href="#collection">Khám phá các mẫu quà ✨</a>
 </section>
 </main>
 
-<footer>
- <div class="container">
-  <div class="footer-main">
-   <div class="footer-about"><a class="brand" href="#home"><span class="brand-mark">♡</span><span>dearly<span>.</span></span></a><p>Một không gian sáng tạo món quà kỹ thuật số, nơi ảnh, lời nhắn và kỷ niệm được gói ghém thành điều thật riêng tư.</p></div>
-   <div class="footer-links">
-    <div class="footer-col"><strong>Khám phá</strong><a href="#gallery">Kho mẫu quà</a><a href="#how">Cách hoạt động</a><a href="#why">Về Dearly</a></div>
-    <div class="footer-col"><strong>Hỗ trợ</strong><a href="#how">Hướng dẫn tạo quà</a><a href="#gallery">Tìm mẫu phù hợp</a><a href="#home">Lên đầu trang ↑</a></div>
-   </div>
-  </div>
-  <div class="footer-bottom"><span>© 2026 Dearly. Made with ♡</span><span>Giao diện mẫu độc lập, không phải website chính thức của DLove.</span></div>
- </div>
-</footer>
-
-<div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
- <div class="modal">
-  <div class="modal-head"><h3 id="modalTitle">Xem mẫu quà</h3><button class="close-modal" id="closeModal" aria-label="Đóng">×</button></div>
-  <div class="modal-content">
-   <div class="modal-art art-valentine" id="modalArt">💝</div>
-   <div class="section-kicker" id="modalCategory">TÌNH YÊU</div>
-   <h2 id="modalProductName" style="font-size:26px">Bó hoa kỷ niệm</h2>
-   <p id="modalDescription">Một món quà được tạo riêng cho người ấy.</p>
-   <div class="modal-note">Đây là bản xem mẫu của giao diện. Để tạo website quà tặng có đường link riêng, cần bổ sung phần lưu dữ liệu và backend.</div>
-   <div class="modal-actions"><button class="btn" id="modalCloseBottom">Quay lại</button><button class="btn btn-primary" id="modalCreate">Bắt đầu tùy chỉnh ↗</button></div>
-  </div>
- </div>
-</div>
-<div class="toast" id="toast" role="status"></div>
+<footer>Made with ♡ by Dearly · Một chút dịu dàng gửi đến thế giới.</footer>
+<div class="particle-layer" id="particleLayer"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
+<div class="toast" id="toast">💗 Đã chọn mẫu quà — tính năng tạo quà cần được kết nối thêm.</div>
+<button id="topBtn" aria-label="Lên đầu trang">↑</button>
 
 <script>
-const products={
- flower:{name:"Bó hoa kỷ niệm",category:"Tình yêu · Kỷ niệm",desc:"Bó hoa ảnh, lời chúc ngọt ngào và lá thư dành riêng cho người ấy.",emoji:"💐",art:"art-valentine"},
- birthday:{name:"Sinh nhật bất ngờ",category:"Sinh nhật",desc:"Thiệp sinh nhật vui tươi với lời chúc, ảnh và những điều đáng nhớ.",emoji:"🎂",art:"art-birthday"},
- galaxy:{name:"Thiên hà tình yêu",category:"3D · Tình yêu",desc:"Không gian lung linh, ảnh kỷ niệm và những dòng chữ dành riêng cho hai người.",emoji:"🌌",art:"art-galaxy"},
- letter:{name:"Lá thư bí mật",category:"Thư & lời chúc",desc:"Một lá thư dịu dàng, nơi bạn có thể nói những điều ngoài đời còn ngại ngùng.",emoji:"💌",art:"art-letter"},
- album:{name:"Album của chúng mình",category:"Kỷ niệm",desc:"Gom những khoảnh khắc yêu thích thành một món quà để cùng xem lại.",emoji:"📸",art:"art-garden"},
- days:{name:"Đếm ngày bên nhau",category:"Tình yêu · 3D",desc:"Một góc nhỏ lưu dấu ngày đặc biệt và hành trình của hai người.",emoji:"💞",art:"art-memory"}
-};
-let activeProduct="flower";
-const cards=[...document.querySelectorAll(".product-card")];
-const filterButtons=[...document.querySelectorAll(".filter")];
-const searchInput=document.getElementById("searchInput");
-const toastEl=document.getElementById("toast");
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+
+// Menu trên điện thoại
+const menuBtn = $('#menuBtn');
+const navLinks = $('#navLinks');
+
+menuBtn.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => navLinks.classList.remove('open'));
+});
+
+// Hiện nội dung mượt khi cuộn đến
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: .13 });
+
+$$('.reveal').forEach(el => observer.observe(el));
+
+// Trái tim, cánh hoa và ánh sáng bay
+const layer = $('#particleLayer');
+const symbols = ['♡','✦','✧','🌸','♥'];
+
+function makeParticle() {
+  const p = document.createElement('span');
+  p.className = 'particle';
+  p.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+  p.style.left = Math.random() * 100 + 'vw';
+  p.style.fontSize = (10 + Math.random() * 17) + 'px';
+  p.style.animationDuration = (7 + Math.random() * 8) + 's';
+  p.style.setProperty('--drift', (Math.random() * 180 - 90) + 'px');
+  p.style.color = ['#f45c9d','#bd7be8','#ff9dc9','#c9a0f4'][Math.floor(Math.random() * 4)];
+  layer.appendChild(p);
+  setTimeout(() => p.remove(), 16000);
+}
+
+let particleTimer = setInterval(makeParticle, 700);
+
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    clearInterval(particleTimer);
+  } else {
+    particleTimer = setInterval(makeParticle, 700);
+  }
+});
+
+// Thẻ quà 3D chuyển động theo chuột
+const visual = $('#visual');
+const card = $('#giftCard');
+
+visual.addEventListener('mousemove', e => {
+  if (innerWidth < 700) return;
+  const r = visual.getBoundingClientRect();
+  const x = (e.clientX - r.left) / r.width - .5;
+  const y = (e.clientY - r.top) / r.height - .5;
+  card.style.animation = 'none';
+  card.style.transform =
+    `rotateY(${x * 18}deg) rotateX(${-y * 15}deg) rotateZ(${5 + x * 3}deg) translateY(-4px)`;
+});
+
+visual.addEventListener('mouseleave', () => {
+  card.style.transform = '';
+  card.style.animation = 'cardFloat 5s ease-in-out infinite';
+});
+
+// Quầng sáng mềm di chuyển theo con trỏ
+const glow = $('#cursorGlow');
+
+window.addEventListener('pointermove', e => {
+  glow.style.left = e.clientX + 'px';
+  glow.style.top = e.clientY + 'px';
+}, { passive: true });
+
+// Demo chọn mẫu quà
+const toast = $('#toast');
 let toastTimer;
-function showToast(message){
- toastEl.textContent=message;toastEl.classList.add("show");
- clearTimeout(toastTimer);toastTimer=setTimeout(()=>toastEl.classList.remove("show"),3000);
-}
-function applyFilters(){
- const active=document.querySelector(".filter.active")?.dataset.filter||"all";
- const query=searchInput.value.trim().toLocaleLowerCase("vi");
- let count=0;
- cards.forEach(card=>{
-  const categories=card.dataset.category.split(" ");
-  const text=(card.dataset.name+" "+card.innerText).toLocaleLowerCase("vi");
-  const categoryMatch=active==="all"||categories.includes(active);
-  const searchMatch=!query||text.includes(query);
-  const visible=categoryMatch&&searchMatch;
-  card.classList.toggle("hidden",!visible);
-  if(visible)count++;
- });
- document.getElementById("resultCount").textContent=`Đang hiển thị ${count} ý tưởng quà tặng`;
- let empty=document.getElementById("emptyState");
- if(count===0&&!empty){
-  empty=document.createElement("div");empty.id="emptyState";empty.className="empty-state";
-  empty.innerHTML="<div style='font-size:32px;margin-bottom:8px'>🔎</div><strong>Chưa tìm thấy mẫu phù hợp</strong><p style='margin-top:6px'>Thử từ khóa khác hoặc chọn tất cả mẫu nhé.</p>";
-  document.getElementById("productGrid").appendChild(empty);
- }else if(count>0&&empty)empty.remove();
-}
-filterButtons.forEach(btn=>btn.addEventListener("click",()=>{
- filterButtons.forEach(b=>b.classList.toggle("active",b===btn));applyFilters();
-}));
-searchInput.addEventListener("input",applyFilters);
-document.getElementById("clearSearch").addEventListener("click",()=>{
- searchInput.value="";filterButtons.forEach(b=>b.classList.toggle("active",b.dataset.filter==="all"));applyFilters();searchInput.focus();
+
+$$('.createBtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    toast.textContent = '💗 Bạn đã chọn: ' + btn.dataset.type +
+      ' — phần tạo và lưu quà cần được kết nối thêm.';
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 3800);
+  });
 });
-const backdrop=document.getElementById("modalBackdrop");
-function openModal(id){
- const p=products[id];if(!p)return;activeProduct=id;
- document.getElementById("modalTitle").textContent="Xem mẫu quà";
- document.getElementById("modalProductName").textContent=p.name;
- document.getElementById("modalCategory").textContent=p.category.toUpperCase();
- document.getElementById("modalDescription").textContent=p.desc;
- const art=document.getElementById("modalArt");art.className="modal-art "+p.art;art.textContent=p.emoji;
- backdrop.classList.add("open");document.body.style.overflow="hidden";document.getElementById("closeModal").focus();
-}
-function closeModal(){backdrop.classList.remove("open");document.body.style.overflow=""}
-document.querySelectorAll(".preview-btn").forEach(btn=>btn.addEventListener("click",()=>openModal(btn.dataset.id)));
-document.querySelectorAll(".create-btn").forEach(btn=>btn.addEventListener("click",()=>openModal(btn.dataset.id)));
-document.getElementById("closeModal").addEventListener("click",closeModal);
-document.getElementById("modalCloseBottom").addEventListener("click",closeModal);
-backdrop.addEventListener("click",e=>{if(e.target===backdrop)closeModal()});
-document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
-document.getElementById("modalCreate").addEventListener("click",()=>{
- closeModal();showToast("Bản demo giao diện: bước kế tiếp là xây dựng form cấu hình cho mẫu “"+products[activeProduct].name+"”.");
+
+// Nút trở về đầu trang
+const topBtn = $('#topBtn');
+
+window.addEventListener('scroll', () => {
+  topBtn.classList.toggle('show', window.scrollY > 450);
+}, { passive: true });
+
+topBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
-const menuBtn=document.getElementById("menuBtn"),navLinks=document.getElementById("navLinks");
-menuBtn.addEventListener("click",()=>{
- const open=navLinks.classList.toggle("open");menuBtn.setAttribute("aria-expanded",String(open));menuBtn.textContent=open?"×":"☰";
-});
-navLinks.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{
- navLinks.classList.remove("open");menuBtn.setAttribute("aria-expanded","false");menuBtn.textContent="☰";
-}));
-applyFilters();
 </script>
 </body>
 </html>
